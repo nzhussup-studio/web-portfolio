@@ -1,6 +1,6 @@
-# Personal Website [nzhussup.com](https://nzhussup.com)
+# Web Portfolio [nzhussup.com](https://nzhussup.com)
 
-This repository contains the source code for my personal website, a responsive and modern portfolio designed to showcase my skills, projects, and experiences.
+This repository contains the source code for my public web portfolio, a responsive frontend designed to present projects, skills, and experience.
 
 ## Technologies Used
 
@@ -27,7 +27,7 @@ Apply the k8s config:
    ```bash
    git clone https://github.com/nzhussup/personal-website.git
    cd personal-website/k8s
-   kubectl apply -f personal-website-deployment.yml
+   kubectl apply -f web-portfolio-deployment.yml
    ```
 
-You have to then configure the ingress controller to route to the port 8000 or make the personal-website-deployment.yml either a LoadBalancer or NodePort and expose the port.
+You then need ingress configured to route traffic to port `8000`, or expose `web-portfolio-deployment.yml` through another service type.
