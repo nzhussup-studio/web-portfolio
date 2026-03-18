@@ -3,14 +3,23 @@ name: Web Portfolio CI/CD
 on:
   push:
     branches:
-      - "**"
+      - main
     paths:
       - "portfolio/**"
+      - ".github/workflows/cicd.yaml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "portfolio/**"
+      - ".github/workflows/cicd.yaml"
+  workflow_dispatch:
 
 jobs:
   build:
     name: Build Docker Image
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout Code
@@ -39,7 +48,7 @@ jobs:
     name: Deploy to Kubernetes
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
       - name: SSH and Rollout Restart
