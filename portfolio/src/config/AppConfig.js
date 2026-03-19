@@ -6,8 +6,8 @@ const config = {
   },
   api: {
     personal: {
-      api_url: "https://api.nzhussup.com",
-      base_url: "https://api.nzhussup.com/v1", 
+      api_url: "https://api.nzhussup.dev",
+      base_url: "https://api.nzhussup.dev/v1",
       endpoints: {
         work_experience: "base/work-experience",
         education: "base/education",
@@ -15,12 +15,12 @@ const config = {
         skills: "base/skill",
         certifications: "base/certificate",
         albums: "album",
-      }
+      },
     },
     github: {
       base_url: "https://api.github.com/repos",
-      token: import.meta.env.VITE_GITHUB_TOKEN
-    }
+      token: import.meta.env.VITE_GITHUB_TOKEN,
+    },
   },
   variables: {
     loadingTimeout: 200,
@@ -28,4 +28,3 @@ const config = {
 };
 
 export default config;
-  

@@ -1,4 +1,4 @@
-# Web Portfolio [nzhussup.com](https://nzhussup.com)
+# Web Portfolio [nzhussup.dev](https://nzhussup.dev)
 
 This repository contains the source code for my public web portfolio, a responsive frontend designed to present projects, skills, and experience.
 
@@ -12,22 +12,20 @@ This repository contains the source code for my public web portfolio, a responsi
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com)
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io)
 
-
 ## Getting Started
 
 ### Prerequisites
 
 - [Kubernetes](https://kubernetes.io/)
 
-
-
 ### Installation
 
 Apply the k8s config:
-   ```bash
-   git clone https://github.com/nzhussup/personal-website.git
-   cd personal-website/k8s
-   kubectl apply -f web-portfolio-deployment.yml
-   ```
+
+```bash
+git clone https://github.com/nzhussup/personal-website.git
+cd personal-website/k8s
+kubectl apply -f web-portfolio-deployment.yml
+```
 
 You then need ingress configured to route traffic to port `8000`, or expose `web-portfolio-deployment.yml` through another service type.
