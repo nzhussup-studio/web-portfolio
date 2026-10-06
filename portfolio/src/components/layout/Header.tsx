@@ -44,18 +44,14 @@ export function Header({
         </nav>
 
         <div className="header-actions">
-          <label className="sr-only" htmlFor="site-language">
-            Language
-          </label>
-          <select
-            id="site-language"
-            className="language-select"
-            value={language}
-            onChange={(event) => onLanguageChange(event.target.value as Language)}
+          <button
+            className="language-button"
+            type="button"
+            onClick={() => onLanguageChange(language === "en" ? "kz" : "en")}
+            aria-label={language === "en" ? "Қазақ тіліне ауысу" : "Switch to English"}
           >
-            <option value="en">EN</option>
-            <option value="kz">KZ</option>
-          </select>
+            {language === "en" ? "KZ" : "EN"}
+          </button>
           <span className="header-divider" aria-hidden="true" />
           <button
             className="icon-button"

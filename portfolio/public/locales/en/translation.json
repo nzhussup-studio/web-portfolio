@@ -55,11 +55,21 @@
   },
 
   "redesign": {
+    "common": {
+      "loading": "Loading…",
+      "errorTitle": "We couldn’t load this right now :(",
+      "errorText": "Something got in the way. Please check your connection or try again in a moment.",
+      "sectionError": "This part didn’t load. Let’s try that again :(",
+      "retry": "Try again",
+      "empty": "Nothing has been published here yet.",
+      "backToTop": "Back to top"
+    },
     "about": {
       "title": "Hi, I’m Nurzhanat",
       "subtitle": "Software engineer, curious builder, and lifelong learner.",
       "intro1": "I enjoy turning ideas into simple, reliable software. I’m drawn to thoughtful design, clean architecture, and solving real problems.",
       "intro2": "I’m currently based in Vienna, exploring new ideas at the intersection of technology, people, and everyday life.",
+      "profileAlt": "Portrait of Nurzhanat Zhussup",
       "generate": "Generate AI summary",
       "pause": "Pause summary",
       "resume": "Resume summary",
@@ -75,8 +85,40 @@
       },
       "beyond": {
         "title": "Beyond the screen",
-        "text": "Away from work, you’ll often find me travelling, skiing, taking photos, or spending time in nature. These experiences keep me curious, refresh my perspective, and remind me to slow down."
+        "text1": "I’m naturally curious, both in my work and outside it. I like understanding how things fit together, whether that means tracing a problem through a software system or finding a new route through the mountains. I value calm thinking, honest conversations, and doing things with care.",
+        "text2": "Time outdoors gives me the space to reset. Skiing, hiking, travelling, and photography pull me away from the screen and into the moment. They keep me patient, observant, and comfortable with taking the longer path when it leads somewhere more interesting.",
+        "mountainAlt": "Nurzhanat skiing in the mountains",
+        "hikeAlt": "A quiet forest along a mountain hike"
       }
+    },
+    "cv": {
+      "title": "Curriculum vitae",
+      "sectionNavigation": "CV sections",
+      "progress": "CV reading progress",
+      "experience": "Experience",
+      "education": "Education",
+      "skills": "Skills",
+      "certificates": "Certificates",
+      "present": "Present",
+      "thesis": "Thesis",
+      "viewCertificate": "View certificate"
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "A selection of things I’ve built and maintained.",
+      "order": "Ordered by display preference",
+      "source": "Source code"
+    },
+    "albums": {
+      "title": "Albums",
+      "description": "Photos and moments away from the screen.",
+      "photoCount_one": "{{count}} photo",
+      "photoCount_other": "{{count}} photos",
+      "back": "All albums",
+      "notFoundTitle": "Album not found :(",
+      "notFoundText": "This album may have moved, been removed, or never existed.",
+      "openPhoto": "Open photo {{number}}",
+      "empty": "This album does not contain any photos yet."
     }
   },
 
@@ -132,8 +174,9 @@
   },
   "exceptions": {
     "not_found": {
-      "title": "404 - Page Not Found",
-      "description": "The page you're looking for does not exist."
+      "title": "Page not found :(",
+      "description": "We couldn’t find the page you were looking for. It may have moved or the address might be incorrect.",
+      "back": "Back to home"
     },
     "internal_server_error": {
       "title": "500 - Internal Server Error",

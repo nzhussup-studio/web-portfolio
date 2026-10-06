@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 import type { Language, Theme } from "../../app/preferences";
+import { BackToTop } from "./BackToTop";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
@@ -26,6 +27,7 @@ export function AppShell({
         onThemeToggle={onThemeToggle}
       />
       <main id="main-content">{children}</main>
+      <BackToTop />
       <Footer />
     </div>
   );
