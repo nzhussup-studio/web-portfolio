@@ -6,11 +6,9 @@ These instructions apply to the entire `web-portfolio` repository. The deployabl
 
 The site is Nurzhanat Zhussup's personal software-engineering portfolio. Preserve its existing backend-driven capabilities while refactoring the frontend toward the architecture and visual direction below.
 
-## Current and target state
+## Current stack
 
-The current frontend is a React/Vite application written mostly in JavaScript and JSX. It currently uses Bootstrap, Axios, React Router, i18next, Framer Motion, Lucide, React Markdown, and Yet Another React Lightbox.
-
-The target stack is:
+The frontend migration is complete. The application uses:
 
 - React with TypeScript in strict mode
 - Vite; do not migrate to Next.js, Vue, or another application framework
@@ -23,9 +21,7 @@ The target stack is:
 - Yet Another React Lightbox for album viewing
 - Vitest and React Testing Library for focused component and utility tests
 
-Treat this as an incremental migration. Do not assume target dependencies or target folders exist until they are added. Preserve working behavior during the migration, convert touched JSX/JS files to TSX/TS when practical, and avoid an unnecessary full rewrite.
-
-Remove Bootstrap, Bootstrap Icons, Axios, and most Framer Motion usage only after their consumers have been migrated. Prefer CSS transitions and respect `prefers-reduced-motion`.
+Do not reintroduce Bootstrap, Bootstrap Icons, Axios, Framer Motion, JavaScript/JSX source files, or an alternative application framework. Prefer CSS transitions and respect `prefers-reduced-motion`.
 
 ## Product structure
 
@@ -193,7 +189,7 @@ Both themes must maintain the approved minimal visual language, readable contras
 
 ## Proposed source organization
 
-Move toward this structure as files are migrated; do not create empty folders speculatively:
+Keep the source organized along this structure; do not create empty folders speculatively:
 
 ```text
 portfolio/src/

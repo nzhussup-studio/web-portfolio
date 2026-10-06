@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f8fa; --surface: #eef0f3; --text: #0a0a0b;
-  --muted: #626979; --line: #d5d9e0; --accent: #145cff; --error: #bb2c35;
+  --background: #f3eadc; --surface: #e7dac7; --text: #1b1611;
+  --muted: #716455; --line: #d2c0aa; --accent: #216653; --error: #a94335;
   --header-height: 5.5rem; --content-width: 90rem; --page-gutter: 1.5rem;
+  color-scheme: light;
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none; text-rendering: optimizeLegibility;
 }
 :root[data-theme="dark"] {
-  --background: #0d0f12; --surface: #16191e; --text: #f4f5f7;
-  --muted: #a1a7b3; --line: #30343b; --accent: #6d93ff; --error: #ff7a84;
+  --background: #171717; --surface: #222220; --text: #f3eee5;
+  --muted: #aaa49b; --line: #3a3834; --accent: #79c5aa; --error: #ff907f;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--background); }

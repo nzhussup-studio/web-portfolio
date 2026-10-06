@@ -2,30 +2,39 @@
 
 This repository contains the source code for my public web portfolio, a responsive frontend designed to present projects, skills, and experience.
 
-## Technologies Used
+## Frontend stack
 
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![React.js](https://img.shields.io/badge/React.js-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io)
+- React and strict TypeScript
+- Vite and Tailwind CSS
+- React Router
+- TanStack Query
+- OpenAPI-generated types and `openapi-fetch`
+- i18next with English and Kazakh
+- Vitest with colocated `name.spec.ts` tests
+
+The frontend source is in `portfolio/`.
 
 ## Getting Started
 
-### Prerequisites
-
-- [Kubernetes](https://kubernetes.io/)
-
-### Installation
-
-Apply the k8s config:
+### Local development
 
 ```bash
-git clone https://github.com/nzhussup/personal-website.git
-cd personal-website/k8s
-kubectl apply -f web-portfolio-deployment.yml
+cd portfolio
+npm install
+npm run dev
 ```
 
-You then need ingress configured to route traffic to port `8000`, or expose `web-portfolio-deployment.yml` through another service type.
+Useful checks:
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
+
+Regenerate API types after changing the workspace OpenAPI document:
+
+```bash
+npm run generate:api
+```
