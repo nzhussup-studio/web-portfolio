@@ -2,15 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { ImageIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getAlbumPreviews } from "../../api/base";
 import { resolveApiAsset } from "../../api/client";
+import { queryKeys } from "../../api/queryKeys";
+import { getAlbumPreviews } from "../../api/queries/albums";
 import { PageState } from "../../components/feedback/PageState";
 import { PageIntro } from "../../components/layout/PageIntro";
 import { albumKey, sortAlbums } from "./albumData";
 
 export function AlbumsPage() {
   const { t } = useTranslation();
-  const albums = useQuery({ queryKey: ["albums", "public"], queryFn: getAlbumPreviews });
+  const albums = useQuery({ queryKey: queryKeys.albums.list, queryFn: getAlbumPreviews });
 
   if (albums.isPending) return <PageState eyebrow="photo_archive / 04" title={t("redesign.common.loading")} />;
   if (albums.isError) return <PageState eyebrow="photo_archive / 04" title={t("redesign.common.errorTitle")} message={t("redesign.common.errorText")} action={{ label: t("redesign.common.retry"), onClick: () => void albums.refetch() }} />;

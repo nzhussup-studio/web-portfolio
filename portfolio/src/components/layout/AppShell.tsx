@@ -1,8 +1,8 @@
 import type { PropsWithChildren } from "react";
 import type { Language, Theme } from "../../app/preferences";
-import { BackToTop } from "./BackToTop";
+import { BackToTop } from "../navigation/BackToTop";
+import { Header } from "../navigation/Header";
 import { Footer } from "./Footer";
-import { Header } from "./Header";
 
 type AppShellProps = PropsWithChildren<{
   language: Language;

@@ -4,8 +4,9 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import Lightbox from "yet-another-react-lightbox";
-import { getAlbum } from "../../api/base";
 import { isNotFoundError } from "../../api/errors";
+import { queryKeys } from "../../api/queryKeys";
+import { getAlbum } from "../../api/queries/albums";
 import { PageState } from "../../components/feedback/PageState";
 import { albumImageSource } from "./albumData";
 
@@ -14,7 +15,7 @@ export function AlbumDetailPage() {
   const { albumID = "" } = useParams();
   const [activeIndex, setActiveIndex] = useState(-1);
   const album = useQuery({
-    queryKey: ["album", albumID],
+    queryKey: queryKeys.albums.detail(albumID),
     queryFn: () => getAlbum(albumID),
     enabled: Boolean(albumID),
     retry: (failureCount, error) => !isNotFoundError(error) && failureCount < 1,

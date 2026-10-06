@@ -3,9 +3,10 @@ import { Layers3, MapPin, Pause, Play, RefreshCw, Sparkles } from "lucide-react"
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { Language } from "../../app/preferences";
-import profilePhoto from "../../assets/nurik.jpeg";
-import skiingPhoto from "../../assets/nurik-skiing.jpeg";
-import forestPhoto from "../../assets/forest.jpeg";
+import { queryKeys } from "../../api/queryKeys";
+import profilePhoto from "./assets/nurik.jpeg";
+import skiingPhoto from "./assets/nurik-skiing.jpeg";
+import forestPhoto from "./assets/forest.jpeg";
 import { fetchSummary } from "./aboutApi";
 
 type AboutPageProps = {
@@ -25,7 +26,7 @@ export function AboutPage({ language }: AboutPageProps) {
   const [paused, setPaused] = useState(false);
 
   const summary = useQuery({
-    queryKey: ["ai-summary", language],
+    queryKey: queryKeys.about.summary(language),
     queryFn: ({ signal }) => fetchSummary(language, signal),
     enabled: requested,
     staleTime: 5 * 60 * 1000,

@@ -7,7 +7,8 @@ import {
   getEducation,
   getSkills,
   getWorkExperience,
-} from "../../api/base";
+} from "../../api/queries/cv";
+import { queryKeys } from "../../api/queryKeys";
 import { PageState } from "../../components/feedback/PageState";
 import { PageIntro } from "../../components/layout/PageIntro";
 import { formatRange } from "./cvData";
@@ -18,10 +19,10 @@ const sections = ["experience", "education", "skills", "certificates"] as const;
 export function CVPage() {
   const { t, i18n } = useTranslation();
   const locale = i18n.language === "kz" ? "kk" : "en";
-  const work = useQuery({ queryKey: ["cv", "work"], queryFn: getWorkExperience });
-  const education = useQuery({ queryKey: ["cv", "education"], queryFn: getEducation });
-  const skills = useQuery({ queryKey: ["cv", "skills"], queryFn: getSkills });
-  const certificates = useQuery({ queryKey: ["cv", "certificates"], queryFn: getCertificates });
+  const work = useQuery({ queryKey: queryKeys.cv.work, queryFn: getWorkExperience });
+  const education = useQuery({ queryKey: queryKeys.cv.education, queryFn: getEducation });
+  const skills = useQuery({ queryKey: queryKeys.cv.skills, queryFn: getSkills });
+  const certificates = useQuery({ queryKey: queryKeys.cv.certificates, queryFn: getCertificates });
   const queries = [work, education, skills, certificates];
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("experience");

@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { getProjects } from "../../api/base";
+import { queryKeys } from "../../api/queryKeys";
+import { getProjects } from "../../api/queries/projects";
 import { PageState } from "../../components/feedback/PageState";
 import { PageIntro } from "../../components/layout/PageIntro";
 import { formatProjectIndex, projectKey } from "./projectData";
 
 export function ProjectsPage() {
   const { t } = useTranslation();
-  const projects = useQuery({ queryKey: ["projects"], queryFn: getProjects });
+  const projects = useQuery({ queryKey: queryKeys.projects.list, queryFn: getProjects });
 
   if (projects.isPending) return <PageState eyebrow="projects_index / 03" title={t("redesign.common.loading")} />;
   if (projects.isError) return <PageState eyebrow="projects_index / 03" title={t("redesign.common.errorTitle")} message={t("redesign.common.errorText")} action={{ label: t("redesign.common.retry"), onClick: () => void projects.refetch() }} />;
