@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Pause, Play, Sparkles } from "lucide-react";
+import { Layers3, MapPin, Pause, Play, RefreshCw, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { Language } from "../../app/preferences";
@@ -11,6 +11,12 @@ import { fetchSummary } from "./aboutApi";
 type AboutPageProps = {
   language: Language;
 };
+
+const profileFacts = [
+  { key: "vienna", Icon: MapPin },
+  { key: "systems", Icon: Layers3 },
+  { key: "learning", Icon: RefreshCw },
+] as const;
 
 export function AboutPage({ language }: AboutPageProps) {
   const { t } = useTranslation();
@@ -103,14 +109,45 @@ export function AboutPage({ language }: AboutPageProps) {
         </section>
       )}
 
-      <section className="facts-grid" aria-label={t("redesign.about.factsLabel")}>
-        {["vienna", "systems", "learning"].map((fact, index) => (
-          <div className="fact" key={fact}>
-            <span className="fact-index">0{index + 1}</span>
-            <h2>{t(`redesign.about.facts.${fact}.title`)}</h2>
-            <p>{t(`redesign.about.facts.${fact}.text`)}</p>
+      <section className="profile-index" aria-labelledby="profile-index-title">
+        <header>
+          <p className="code-label">{"// profile"}</p>
+          <h2 id="profile-index-title">{t("redesign.about.factsTitle")}</h2>
+        </header>
+        <dl>
+          {profileFacts.map(({ key, Icon }) => (
+            <div className="profile-index-row" key={key}>
+              <dt>
+                {t(`redesign.about.facts.${key}.label`)}
+                <Icon aria-hidden="true" />
+              </dt>
+              <dd>
+                <strong>{t(`redesign.about.facts.${key}.title`)}</strong>
+                <span>{t(`redesign.about.facts.${key}.text`)}</span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className="story-grid" aria-labelledby="story-title">
+        <header>
+          <p className="code-label">{"// the route here"}</p>
+          <h2 id="story-title">{t("redesign.about.story.title")}</h2>
+          <div className="story-route" aria-hidden="true">
+            <span>01</span><i /><span>02</span>
           </div>
-        ))}
+        </header>
+        <div className="story-copy">
+          <article>
+            <span>{t("redesign.about.story.then")}</span>
+            <p>{t("redesign.about.story.text1")}</p>
+          </article>
+          <article>
+            <span>{t("redesign.about.story.now")}</span>
+            <p>{t("redesign.about.story.text2")}</p>
+          </article>
+        </div>
       </section>
 
       <section className="beyond-grid">

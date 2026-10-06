@@ -66,9 +66,9 @@
     },
     "about": {
       "title": "Hi, I’m Nurzhanat",
-      "subtitle": "Software engineer, curious builder, and lifelong learner.",
-      "intro1": "I enjoy turning ideas into simple, reliable software. I’m drawn to thoughtful design, clean architecture, and solving real problems.",
-      "intro2": "I’m currently based in Vienna, exploring new ideas at the intersection of technology, people, and everyday life.",
+      "subtitle": "Software engineer who likes making useful things work well.",
+      "intro1": "Hi, I’m Nurzhanat. I’m a software engineer working across backend services, frontend applications, and the infrastructure that keeps everything running. I like understanding the whole path from an idea to a reliable product in production.",
+      "intro2": "I live in Vienna and come from Almaty. Most days, I’m designing an API, improving a user flow, working through a deployment problem, or collecting an unreasonable number of open browser tabs.",
       "profileAlt": "Portrait of Nurzhanat Zhussup",
       "generate": "Generate AI summary",
       "pause": "Pause summary",
@@ -78,15 +78,23 @@
       "loading": "Generating a summary from my experience…",
       "error": "The AI summary is unavailable right now. Please try again later.",
       "factsLabel": "A few facts about Nurzhanat",
+      "factsTitle": "At a glance",
       "facts": {
-        "vienna": { "title": "Based in Vienna", "text": "A home for good coffee, great people, and new perspectives." },
-        "systems": { "title": "Building reliable systems", "text": "I care about software that is clear, maintainable, and useful." },
-        "learning": { "title": "Always learning", "text": "New tools, new ideas, and a more thoughtful way of building." }
+        "vienna": { "label": "Location", "title": "Vienna, Austria", "text": "Based in Vienna and working in an international environment." },
+        "systems": { "label": "Engineering", "title": "Full stack + infrastructure", "text": "From interfaces and APIs to deployments, observability, and reliable systems." },
+        "learning": { "label": "Practice", "title": "Still learning", "text": "There is always another tool to try or a better question to ask." }
+      },
+      "story": {
+        "title": "How I got here",
+        "then": "Then / Economics + data",
+        "now": "Now / Software engineering",
+        "text1": "My route into software wasn’t completely direct. I studied economics at WU Vienna and initially imagined myself working in finance. A data science specialization changed that. It gave me practical experience with data and machine learning, but more importantly, it made me realize that I wanted to build software as a career.",
+        "text2": "Today I work as a software engineer, mostly across the full stack and infrastructure. I enjoy moving between product-facing code, backend systems, deployments, and the operational work that keeps software dependable."
       },
       "beyond": {
         "title": "Beyond the screen",
-        "text1": "I’m naturally curious, both in my work and outside it. I like understanding how things fit together, whether that means tracing a problem through a software system or finding a new route through the mountains. I value calm thinking, honest conversations, and doing things with care.",
-        "text2": "Time outdoors gives me the space to reset. Skiing, hiking, travelling, and photography pull me away from the screen and into the moment. They keep me patient, observant, and comfortable with taking the longer path when it leads somewhere more interesting.",
+        "text1": "I’m curious outside work too. I like long conversations, unfamiliar places, and figuring out how things fit together. Sometimes that means following a bug through a system; sometimes it means finding the right trail through the mountains.",
+        "text2": "Skiing is the hobby I’d have the hardest time giving up. I also enjoy hiking, travelling, and taking photos along the way. Being outside clears my head and usually sends me back to the screen with better ideas—or at least with fewer tabs open.",
         "mountainAlt": "Nurzhanat skiing in the mountains",
         "hikeAlt": "A quiet forest along a mountain hike"
       }
