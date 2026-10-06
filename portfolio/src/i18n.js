@@ -9,12 +9,18 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
+    supportedLngs: ['en', 'kz'],
+    nonExplicitSupportedLngs: false,
     debug: false,
     interpolation: {
       escapeValue: false,
     },
     backend: {
       loadPath: '/locales/{{lng}}/translation.json',
+    },
+    detection: {
+      order: [],
+      caches: [],
     },
   });
 

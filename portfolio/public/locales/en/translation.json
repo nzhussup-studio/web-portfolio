@@ -54,6 +54,32 @@
     }
   },
 
+  "redesign": {
+    "about": {
+      "title": "Hi, I’m Nurzhanat",
+      "subtitle": "Software engineer, curious builder, and lifelong learner.",
+      "intro1": "I enjoy turning ideas into simple, reliable software. I’m drawn to thoughtful design, clean architecture, and solving real problems.",
+      "intro2": "I’m currently based in Vienna, exploring new ideas at the intersection of technology, people, and everyday life.",
+      "generate": "Generate AI summary",
+      "pause": "Pause summary",
+      "resume": "Resume summary",
+      "regenerate": "Generate again",
+      "ready": "Ready when you are.",
+      "loading": "Generating a summary from my experience…",
+      "error": "The AI summary is unavailable right now. Please try again later.",
+      "factsLabel": "A few facts about Nurzhanat",
+      "facts": {
+        "vienna": { "title": "Based in Vienna", "text": "A home for good coffee, great people, and new perspectives." },
+        "systems": { "title": "Building reliable systems", "text": "I care about software that is clear, maintainable, and useful." },
+        "learning": { "title": "Always learning", "text": "New tools, new ideas, and a more thoughtful way of building." }
+      },
+      "beyond": {
+        "title": "Beyond the screen",
+        "text": "Away from work, you’ll often find me travelling, skiing, taking photos, or spending time in nature. These experiences keep me curious, refresh my perspective, and remind me to slow down."
+      }
+    }
+  },
+
   "cv_page": {
     "title": "Curriculum Vitae",
     "navigations": {

@@ -4,10 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="src/assets/progger-man.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>nzhussup</title>
+    <meta name="description" content="Nurzhanat Zhussup — software engineer based in Vienna." />
+    <title>Nurzhanat Zhussup — Software Engineer</title>
+    <script>
+      (() => {
+        const saved = localStorage.getItem("theme");
+        const theme = saved === "light" || saved === "dark"
+          ? saved
+          : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
