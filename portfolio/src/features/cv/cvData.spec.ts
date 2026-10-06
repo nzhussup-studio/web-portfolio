@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatRange, splitValues } from "./cvData";
+import { formatDate, formatRange, splitValues } from "./cvData";
 
 describe("CV data formatting", () => {
   it("keeps backend date strings that are not ISO dates", () => {
@@ -14,5 +14,16 @@ describe("CV data formatting", () => {
 
   it("splits comma-separated API values", () => {
     expect(splitValues("Go, React, Kubernetes")).toEqual(["Go", "React", "Kubernetes"]);
+  });
+
+  it("removes empty values from comma-separated API fields", () => {
+    expect(splitValues("Go, , React,")).toEqual(["Go", "React"]);
+    expect(splitValues(undefined)).toEqual([]);
+  });
+
+  it("formats valid ISO dates and preserves invalid values", () => {
+    expect(formatDate("2024-01-15", "en")).toMatch(/Jan 2024/);
+    expect(formatDate("2024-99-99", "en")).toBe("2024-99-99");
+    expect(formatDate(undefined, "en")).toBe("");
   });
 });

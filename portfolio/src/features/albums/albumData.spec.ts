@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { albumImageSource, sortAlbums } from "./albumData";
+import { albumImageSource, albumKey, sortAlbums } from "./albumData";
 
 describe("album data", () => {
   it("sorts dated albums newest-first and undated albums last", () => {
@@ -15,5 +15,17 @@ describe("album data", () => {
     expect(albumImageSource("winter trip", { id: "cover.jpg" })).toContain(
       "/album/winter%20trip/cover.jpg",
     );
+  });
+
+  it("prefers an explicit image URL and handles missing image sources", () => {
+    expect(albumImageSource("winter", { url: "/media/cover.jpg" })).toContain(
+      "/media/cover.jpg",
+    );
+    expect(albumImageSource("winter", {})).toBeUndefined();
+  });
+
+  it("uses an album ID as the stable key and falls back predictably", () => {
+    expect(albumKey({ id: "alps", title: "Alps", type: "public" }, 2)).toBe("alps");
+    expect(albumKey({ title: "Alps", type: "public" }, 2)).toBe("Alps-2");
   });
 });

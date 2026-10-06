@@ -11,3 +11,13 @@ describe("isNotFoundError", () => {
     expect(isNotFoundError(new Error("offline"))).toBe(false);
   });
 });
+
+describe("ApiError", () => {
+  it("preserves status, message, and error identity", () => {
+    const error = new ApiError(503, "Temporarily unavailable");
+    expect(error).toBeInstanceOf(Error);
+    expect(error.name).toBe("ApiError");
+    expect(error.status).toBe(503);
+    expect(error.message).toBe("Temporarily unavailable");
+  });
+});
