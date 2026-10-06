@@ -58,7 +58,7 @@ Follow these principles:
 - Minimal, informative, and editorial
 - Swiss grid discipline with Apple-like restraint
 - Generous whitespace, strong alignment, clear hierarchy, and thin rules
-- Primarily neutral surfaces with one restrained blue accent
+- Warm neutral surfaces with one restrained evergreen/sage accent
 - Neutral grotesk sans-serif for primary text and monospace only for metadata or subtle coding cues
 - Coding references should be light: section paths, indices, or metadata—not terminals, IDE chrome, large code blocks, neon, or cyberpunk styling
 - Square or nearly square geometry, minimal shadows, and few decorative elements
@@ -197,6 +197,9 @@ portfolio/src/
     generated/
     queries/
     client.ts
+    errors.ts
+    queryKeys.ts
+    types.ts
   app/
     App.tsx
     providers.tsx
@@ -208,14 +211,13 @@ portfolio/src/
     navigation/
   features/
     about/
+      assets/
     albums/
     cv/
     projects/
   hooks/
   i18n/
   styles/
-  types/
-  utils/
 ```
 
 Keep route-level data and UI in the relevant feature. Keep truly reusable presentation primitives in `components/`. Avoid catch-all utility files and components that mix fetching, transformation, routing, and complex presentation.
