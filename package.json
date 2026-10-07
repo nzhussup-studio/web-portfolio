@@ -1,6 +1,6 @@
 {
   "name": "web-portfolio",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "This repository contains the source code for my personal website, a responsive and modern portfolio designed to showcase my skills, projects, and experiences.",
   "main": "index.js",
   "scripts": {

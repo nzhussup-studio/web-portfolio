@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/nzhussup/personal-website/compare/v3.0.0...v3.0.1) (2026-10-07)
+
+
+### Bug Fixes
+
+* cv page bugs ([06f0ecc](https://github.com/nzhussup/personal-website/commit/06f0ecc278646efc84cf390acc9ad7066c69141d))
+
 ## [3.0.0](https://github.com/nzhussup/personal-website/compare/v2.2.0...v3.0.0) (2026-10-07)
 
 
