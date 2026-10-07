@@ -14,17 +14,12 @@ export function isTheme(value: string | null): value is Theme {
 
 export function resolveLanguage(
   urlValue: string | null,
-  storedValue: string | null,
 ): Language {
   if (isLanguage(urlValue)) return urlValue;
-  if (isLanguage(storedValue)) return storedValue;
   return "en";
 }
 
-export function resolveTheme(
-  storedValue: string | null,
-  prefersDark: boolean,
-): Theme {
-  if (isTheme(storedValue)) return storedValue;
-  return prefersDark ? "dark" : "light";
+export function resolveTheme(urlValue: string | null): Theme {
+  if (isTheme(urlValue)) return urlValue;
+  return "light";
 }

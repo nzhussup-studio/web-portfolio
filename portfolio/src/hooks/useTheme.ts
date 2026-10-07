@@ -1,14 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { resolveTheme, type Theme } from "../app/preferences";
 
-const STORAGE_KEY = "theme";
-
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "light";
-  return resolveTheme(
-    window.localStorage.getItem(STORAGE_KEY),
-    window.matchMedia("(prefers-color-scheme: dark)").matches,
-  );
+  return resolveTheme(new URLSearchParams(window.location.search).get("theme"));
 }
 
 export function useTheme() {
@@ -17,7 +12,11 @@ export function useTheme() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
-    window.localStorage.setItem(STORAGE_KEY, theme);
+
+    const url = new URL(window.location.href);
+    if (theme === "light") url.searchParams.delete("theme");
+    else url.searchParams.set("theme", theme);
+    window.history.replaceState(window.history.state, "", `${url.pathname}${url.search}${url.hash}`);
   }, [theme]);
 
   const toggleTheme = useCallback(() => {

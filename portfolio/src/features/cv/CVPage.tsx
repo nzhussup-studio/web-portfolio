@@ -50,25 +50,25 @@ export function CVPage() {
   }, []);
 
   if (queries.every((query) => query.isPending)) {
-    return <PageState eyebrow="curriculum_vitae / 02" title={t("redesign.common.loading")} />;
+    return <PageState eyebrow="curriculum_vitae / 02" title={t("portfolio.common.loading")} />;
   }
 
   if (queries.every((query) => query.isError)) {
     return (
       <PageState
         eyebrow="curriculum_vitae / 02"
-        title={t("redesign.common.errorTitle")}
-        message={t("redesign.common.errorText")}
-        action={{ label: t("redesign.common.retry"), onClick: () => void Promise.all(queries.map((query) => query.refetch())) }}
+        title={t("portfolio.common.errorTitle")}
+        message={t("portfolio.common.errorText")}
+        action={{ label: t("portfolio.common.retry"), onClick: () => void Promise.all(queries.map((query) => query.refetch())) }}
       />
     );
   }
 
   return (
     <article className="content-page site-container">
-      <PageIntro eyebrow="curriculum_vitae / 02" title={t("redesign.cv.title")} />
+      <PageIntro eyebrow="curriculum_vitae / 02" title={t("portfolio.cv.title")} />
 
-      <nav className="section-nav" aria-label={t("redesign.cv.sectionNavigation")}>
+      <nav className="section-nav" aria-label={t("portfolio.cv.sectionNavigation")}>
         {sections.map((section) => (
           <a
             className={activeSection === section ? "is-active" : undefined}
@@ -76,13 +76,13 @@ export function CVPage() {
             href={`#${section}`}
             aria-current={activeSection === section ? "location" : undefined}
           >
-            {t(`redesign.cv.${section}`)}
+            {t(`portfolio.cv.${section}`)}
           </a>
         ))}
         <span
           className="cv-progress"
           role="progressbar"
-          aria-label={t("redesign.cv.progress")}
+          aria-label={t("portfolio.cv.progress")}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={Math.round(scrollProgress)}
@@ -93,11 +93,11 @@ export function CVPage() {
 
       <section id="experience" className="linear-section">
         <p className="code-label">{"// experience"}</p>
-        <h2>{t("redesign.cv.experience")}</h2>
+        <h2>{t("portfolio.cv.experience")}</h2>
         {work.isError ? <InlineError onRetry={() => void work.refetch()} /> : work.data?.length ? work.data.map((item) => (
           <div className="cv-row" key={item.id ?? `${item.company}-${item.startDate}`}>
             <div className="cv-meta">
-              <span>{formatRange(item.startDate, item.endDate, locale, t("redesign.cv.present"))}</span>
+              <span>{formatRange(item.startDate, item.endDate, locale, t("portfolio.cv.present"))}</span>
               <span>{item.location}</span>
             </div>
             <div className="cv-content">
@@ -112,17 +112,17 @@ export function CVPage() {
 
       <section id="education" className="linear-section">
         <p className="code-label">{"// education"}</p>
-        <h2>{t("redesign.cv.education")}</h2>
+        <h2>{t("portfolio.cv.education")}</h2>
         {education.isError ? <InlineError onRetry={() => void education.refetch()} /> : education.data?.length ? education.data.map((item) => (
           <div className="cv-row" key={item.id ?? `${item.institution}-${item.startDate}`}>
             <div className="cv-meta">
-              <span>{formatRange(item.startDate, item.endDate, locale, t("redesign.cv.present"))}</span>
+              <span>{formatRange(item.startDate, item.endDate, locale, t("portfolio.cv.present"))}</span>
               <span>{item.location}</span>
             </div>
             <div className="cv-content">
               <h3>{item.degree}</h3>
               <strong>{item.institution}</strong>
-              {item.thesis && <p><b>{t("redesign.cv.thesis")}:</b> {item.thesis}</p>}
+              {item.thesis && <p><b>{t("portfolio.cv.thesis")}:</b> {item.thesis}</p>}
               {item.description && <p>{item.description}</p>}
             </div>
           </div>
@@ -131,7 +131,7 @@ export function CVPage() {
 
       <section id="skills" className="linear-section">
         <p className="code-label">{"// skills"}</p>
-        <h2>{t("redesign.cv.skills")}</h2>
+        <h2>{t("portfolio.cv.skills")}</h2>
         {skills.isError ? <InlineError onRetry={() => void skills.refetch()} /> : skills.data?.length ? skills.data.map((item) => (
           <div className="skill-row" key={item.id ?? item.category}>
             <h3>{item.category}</h3><code>{item.skillNames}</code>
@@ -141,11 +141,11 @@ export function CVPage() {
 
       <section id="certificates" className="linear-section">
         <p className="code-label">{"// certificates"}</p>
-        <h2>{t("redesign.cv.certificates")}</h2>
+        <h2>{t("portfolio.cv.certificates")}</h2>
         {certificates.isError ? <InlineError onRetry={() => void certificates.refetch()} /> : certificates.data?.length ? certificates.data.map((item) => (
           <div className="certificate-row" key={item.id ?? item.name}>
             <h3>{item.name}</h3><span>{item.issuer}</span>
-            {item.url && <a href={item.url} target="_blank" rel="noreferrer">{t("redesign.cv.viewCertificate")}<ExternalLink aria-hidden="true" /></a>}
+            {item.url && <a href={item.url} target="_blank" rel="noreferrer">{t("portfolio.cv.viewCertificate")}<ExternalLink aria-hidden="true" /></a>}
           </div>
         )) : <Empty />}
       </section>
@@ -155,10 +155,10 @@ export function CVPage() {
 
 function Empty() {
   const { t } = useTranslation();
-  return <p className="inline-state">{t("redesign.common.empty")}</p>;
+  return <p className="inline-state">{t("portfolio.common.empty")}</p>;
 }
 
 function InlineError({ onRetry }: { onRetry: () => void }) {
   const { t } = useTranslation();
-  return <p className="inline-state error-text">{t("redesign.common.sectionError")} <button type="button" onClick={onRetry}>{t("redesign.common.retry")}</button></p>;
+  return <p className="inline-state error-text">{t("portfolio.common.sectionError")} <button type="button" onClick={onRetry}>{t("portfolio.common.retry")}</button></p>;
 }

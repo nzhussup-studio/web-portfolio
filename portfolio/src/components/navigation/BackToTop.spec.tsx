@@ -8,7 +8,7 @@ describe("BackToTop", () => {
     render(<BackToTop />);
     fireEvent.scroll(window);
 
-    const button = screen.getByRole("button", { name: "redesign.common.backToTop" });
+    const button = screen.getByRole("button", { name: "portfolio.common.backToTop" });
     expect(button).toHaveClass("is-visible");
     fireEvent.click(button);
     expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: "smooth" });

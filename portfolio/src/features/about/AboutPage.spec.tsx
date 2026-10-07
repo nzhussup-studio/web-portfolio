@@ -11,8 +11,8 @@ describe("AboutPage", () => {
     vi.mocked(fetchSummary).mockResolvedValue("A concise summary.");
     renderWithApp(<AboutPage language="en" />);
 
-    expect(screen.getByRole("heading", { level: 1, name: "redesign.about.title" })).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "redesign.about.generate" }));
+    expect(screen.getByRole("heading", { level: 1, name: "portfolio.about.title" })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "portfolio.about.generate" }));
     await waitFor(() => expect(fetchSummary).toHaveBeenCalledWith("en", expect.any(AbortSignal)));
     expect(screen.getByText("ai.summary / live")).toBeInTheDocument();
   });

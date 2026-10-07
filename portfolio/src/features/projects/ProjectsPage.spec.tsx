@@ -15,7 +15,7 @@ describe("ProjectsPage", () => {
 
     expect(await screen.findByRole("heading", { name: "Konform" })).toBeInTheDocument();
     expect(screen.getByText("Go, React")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /redesign.projects.source/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /portfolio.projects.source/i })).toHaveAttribute(
       "href",
       "https://github.com/nzhussup/konform",
     );
@@ -24,6 +24,6 @@ describe("ProjectsPage", () => {
   it("shows a friendly empty state", async () => {
     vi.mocked(getProjects).mockResolvedValue([]);
     renderWithApp(<ProjectsPage />);
-    expect(await screen.findByText("redesign.common.empty")).toBeInTheDocument();
+    expect(await screen.findByText("portfolio.common.empty")).toBeInTheDocument();
   });
 });

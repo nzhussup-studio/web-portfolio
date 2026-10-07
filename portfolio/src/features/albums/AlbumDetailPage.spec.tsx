@@ -19,8 +19,8 @@ describe("AlbumDetailPage", () => {
     vi.mocked(getAlbum).mockRejectedValue(new ApiError(404));
     renderWithApp(page, { route: "/albums/missing" });
 
-    expect(await screen.findByRole("heading", { name: "redesign.albums.notFoundTitle" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /redesign.albums.back/i })).toHaveAttribute("href", "/albums");
+    expect(await screen.findByRole("heading", { name: "portfolio.albums.notFoundTitle" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /portfolio.albums.back/i })).toHaveAttribute("href", "/albums");
   });
 
   it("renders album metadata and images", async () => {
@@ -33,6 +33,6 @@ describe("AlbumDetailPage", () => {
     renderWithApp(page, { route: "/albums/winter" });
 
     expect(await screen.findByRole("heading", { name: "Winter" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "redesign.albums.openPhoto" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "portfolio.albums.openPhoto" })).toBeInTheDocument();
   });
 });

@@ -8,12 +8,11 @@
     <title>Nurzhanat Zhussup — Software Engineer</title>
     <script>
       (() => {
-        const saved = localStorage.getItem("theme");
-        const theme = saved === "light" || saved === "dark"
-          ? saved
-          : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const preferences = new URLSearchParams(location.search);
+        const theme = preferences.get("theme") === "dark" ? "dark" : "light";
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme;
+        document.documentElement.lang = preferences.get("lang") === "kz" ? "kk" : "en";
       })();
     </script>
   </head>

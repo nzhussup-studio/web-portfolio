@@ -11,18 +11,18 @@ export function ProjectsPage() {
   const { t } = useTranslation();
   const projects = useQuery({ queryKey: queryKeys.projects.list, queryFn: getProjects });
 
-  if (projects.isPending) return <PageState eyebrow="projects_index / 03" title={t("redesign.common.loading")} />;
-  if (projects.isError) return <PageState eyebrow="projects_index / 03" title={t("redesign.common.errorTitle")} message={t("redesign.common.errorText")} action={{ label: t("redesign.common.retry"), onClick: () => void projects.refetch() }} />;
+  if (projects.isPending) return <PageState eyebrow="projects_index / 03" title={t("portfolio.common.loading")} />;
+  if (projects.isError) return <PageState eyebrow="projects_index / 03" title={t("portfolio.common.errorTitle")} message={t("portfolio.common.errorText")} action={{ label: t("portfolio.common.retry"), onClick: () => void projects.refetch() }} />;
 
   return (
     <article className="content-page site-container">
       <PageIntro
         eyebrow="projects_index / 03"
-        title={t("redesign.projects.title")}
-        description={t("redesign.projects.description")}
-        aside={<span className="order-note">{t("redesign.projects.order")}</span>}
+        title={t("portfolio.projects.title")}
+        description={t("portfolio.projects.description")}
+        aside={<span className="order-note">{t("portfolio.projects.order")}</span>}
       />
-      <section className="project-list" aria-label={t("redesign.projects.title")}>
+      <section className="project-list" aria-label={t("portfolio.projects.title")}>
         {projects.data.length ? projects.data.map((project, index) => (
           <article className="project-row" key={projectKey(project, index)}>
             <span className="project-index">{formatProjectIndex(index)}</span>
@@ -32,11 +32,11 @@ export function ProjectsPage() {
             </div>
             {project.url && (
               <a href={project.url} target="_blank" rel="noreferrer">
-                {t("redesign.projects.source")}<ExternalLink aria-hidden="true" />
+                {t("portfolio.projects.source")}<ExternalLink aria-hidden="true" />
               </a>
             )}
           </article>
-        )) : <p className="inline-state">{t("redesign.common.empty")}</p>}
+        )) : <p className="inline-state">{t("portfolio.common.empty")}</p>}
       </section>
     </article>
   );

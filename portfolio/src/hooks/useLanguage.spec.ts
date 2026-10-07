@@ -15,7 +15,6 @@ describe("useLanguage", () => {
 
     expect(result.current.language).toBe("kz");
     await waitFor(() => expect(document.documentElement.lang).toBe("kk"));
-    expect(localStorage.getItem("language")).toBe("kz");
     expect(window.location.search).toBe("?lang=kz");
   });
 

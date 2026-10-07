@@ -3,15 +3,15 @@ import { isLanguage, isTheme, resolveLanguage, resolveTheme } from "./preference
 
 describe("resolveLanguage", () => {
   it("prefers a supported URL language", () => {
-    expect(resolveLanguage("kz", "en")).toBe("kz");
+    expect(resolveLanguage("kz")).toBe("kz");
   });
 
   it("falls back to English for unsupported values", () => {
-    expect(resolveLanguage("de", "fr")).toBe("en");
+    expect(resolveLanguage("de")).toBe("en");
   });
 
-  it("uses a saved language when the URL has no supported value", () => {
-    expect(resolveLanguage(null, "kz")).toBe("kz");
+  it("uses English when the URL has no language", () => {
+    expect(resolveLanguage(null)).toBe("en");
   });
 
   it("recognizes only supported languages", () => {
@@ -22,13 +22,12 @@ describe("resolveLanguage", () => {
 });
 
 describe("resolveTheme", () => {
-  it("uses an explicit saved theme", () => {
-    expect(resolveTheme("light", true)).toBe("light");
+  it("prefers a supported URL theme", () => {
+    expect(resolveTheme("dark")).toBe("dark");
   });
 
-  it("uses the operating-system preference on first visit", () => {
-    expect(resolveTheme(null, true)).toBe("dark");
-    expect(resolveTheme(null, false)).toBe("light");
+  it("uses light when the URL has no theme", () => {
+    expect(resolveTheme(null)).toBe("light");
   });
 
   it("recognizes only supported themes", () => {

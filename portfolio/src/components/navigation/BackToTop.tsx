@@ -20,7 +20,7 @@ export function BackToTop() {
       className={`back-to-top${visible ? " is-visible" : ""}`}
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      aria-label={t("redesign.common.backToTop")}
+      aria-label={t("portfolio.common.backToTop")}
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
     >
