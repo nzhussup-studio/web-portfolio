@@ -13,10 +13,10 @@ type HeaderProps = {
 };
 
 const navigation = [
-  { to: "/", en: "About", kz: "Мен туралы" },
-  { to: "/curriculum-vitae", en: "CV", kz: "Түйіндеме" },
-  { to: "/projects", en: "Projects", kz: "Жобалар" },
-  { to: "/albums", en: "Albums", kz: "Альбомдар" },
+  { to: "/", en: "About", kk: "Мен туралы" },
+  { to: "/curriculum-vitae", en: "CV", kk: "Түйіндеме" },
+  { to: "/projects", en: "Projects", kk: "Жобалар" },
+  { to: "/albums", en: "Albums", kk: "Альбомдар" },
 ] as const;
 
 export function Header({
@@ -65,10 +65,10 @@ export function Header({
           <button
             className="language-button"
             type="button"
-            onClick={() => onLanguageChange(language === "en" ? "kz" : "en")}
+            onClick={() => onLanguageChange(language === "en" ? "kk" : "en")}
             aria-label={language === "en" ? "Қазақ тіліне ауысу" : "Switch to English"}
           >
-            {language === "en" ? "KZ" : "EN"}
+            {language === "en" ? "KK" : "EN"}
           </button>
           <span className="header-divider" aria-hidden="true" />
           <button

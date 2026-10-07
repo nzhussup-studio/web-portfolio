@@ -10,16 +10,16 @@ afterEach(() => {
 
 describe("useLanguage", () => {
   it("reads Kazakh from the URL and synchronizes browser state", async () => {
-    window.history.replaceState(null, "", "/projects?lang=kz");
+    window.history.replaceState(null, "", "/projects?lang=kk");
     const { result } = renderHook(() => useLanguage());
 
-    expect(result.current.language).toBe("kz");
+    expect(result.current.language).toBe("kk");
     await waitFor(() => expect(document.documentElement.lang).toBe("kk"));
-    expect(window.location.search).toBe("?lang=kz");
+    expect(window.location.search).toBe("?lang=kk");
   });
 
   it("removes the default language from the URL", async () => {
-    window.history.replaceState(null, "", "/?lang=kz");
+    window.history.replaceState(null, "", "/?lang=kk");
     const { result } = renderHook(() => useLanguage());
     act(() => result.current.setLanguage("en"));
 

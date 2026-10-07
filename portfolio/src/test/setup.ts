@@ -9,7 +9,7 @@ afterEach(cleanup);
 void i18n.use(initReactI18next).init({
   lng: "en",
   fallbackLng: "en",
-  resources: { en: { translation: {} }, kz: { translation: {} } },
+  resources: { en: { translation: {} }, kk: { translation: {} } },
   interpolation: { escapeValue: false },
 });
 

@@ -11,7 +11,7 @@
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit --pretty false",
     "test": "vitest run",
-    "generate:api": "openapi-typescript ../../web-admin-panel/admin-panel/openapi.yaml -o src/api/generated/schema.ts",
+    "generate:api": "openapi-typescript ./openapi.yaml -o src/api/generated/schema.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },

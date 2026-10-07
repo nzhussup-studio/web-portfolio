@@ -1,6 +1,6 @@
 import { apiClient } from "../../api/client";
 
-export async function fetchSummary(language: "en" | "kz", signal?: AbortSignal) {
+export async function fetchSummary(language: "en" | "kk", signal?: AbortSignal) {
   const { data, error } = await apiClient.GET("/v1/llm/summarize", {
     params: { query: { lang: language } },
     signal,

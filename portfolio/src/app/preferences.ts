@@ -1,4 +1,4 @@
-export const SUPPORTED_LANGUAGES = ["en", "kz"] as const;
+export const SUPPORTED_LANGUAGES = ["en", "kk"] as const;
 export type Language = (typeof SUPPORTED_LANGUAGES)[number];
 
 export const THEMES = ["light", "dark"] as const;

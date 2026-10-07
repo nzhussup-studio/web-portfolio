@@ -25,7 +25,7 @@ describe("Header", () => {
     fireEvent.click(screen.getByRole("button", { name: "Enter Nerd Mode" }));
     expect(toggleNerdMode).toHaveBeenCalledOnce();
     fireEvent.click(screen.getByRole("button", { name: "Қазақ тіліне ауысу" }));
-    expect(changeLanguage).toHaveBeenCalledWith("kz");
+    expect(changeLanguage).toHaveBeenCalledWith("kk");
     fireEvent.click(screen.getByRole("button", { name: "Use dark theme" }));
     expect(toggleTheme).toHaveBeenCalledOnce();
   });
@@ -34,7 +34,7 @@ describe("Header", () => {
     const changeLanguage = vi.fn();
     renderWithApp(
       <Header
-        language="kz"
+        language="kk"
         onLanguageChange={changeLanguage}
         theme="dark"
         onThemeToggle={vi.fn()}

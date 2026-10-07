@@ -9,9 +9,9 @@ describe("fetchSummary", () => {
     vi.mocked(apiClient.GET).mockResolvedValue({ data: { message: "Summary" } } as never);
     const signal = new AbortController().signal;
 
-    await expect(fetchSummary("kz", signal)).resolves.toBe("Summary");
+    await expect(fetchSummary("kk", signal)).resolves.toBe("Summary");
     expect(apiClient.GET).toHaveBeenCalledWith("/v1/llm/summarize", {
-      params: { query: { lang: "kz" } },
+      params: { query: { lang: "kk" } },
       signal,
     });
   });

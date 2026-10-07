@@ -4,7 +4,7 @@ import { initReactI18next } from "react-i18next";
 
 void i18n.use(HttpBackend).use(initReactI18next).init({
   fallbackLng: "en",
-  supportedLngs: ["en", "kz"],
+  supportedLngs: ["en", "kk"],
   nonExplicitSupportedLngs: false,
   interpolation: { escapeValue: false },
   backend: { loadPath: "/locales/{{lng}}/translation.json" },

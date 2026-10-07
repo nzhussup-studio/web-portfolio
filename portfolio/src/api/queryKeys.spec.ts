@@ -4,7 +4,7 @@ import { queryKeys } from "./queryKeys";
 describe("queryKeys", () => {
   it("isolates summaries by language", () => {
     expect(queryKeys.about.summary("en")).toEqual(["about", "summary", "en"]);
-    expect(queryKeys.about.summary("kz")).toEqual(["about", "summary", "kz"]);
+    expect(queryKeys.about.summary("kk")).toEqual(["about", "summary", "kk"]);
   });
 
   it("isolates album detail requests by ID", () => {

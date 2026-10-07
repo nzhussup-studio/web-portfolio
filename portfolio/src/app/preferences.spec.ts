@@ -3,7 +3,7 @@ import { isLanguage, isTheme, resolveLanguage, resolveTheme } from "./preference
 
 describe("resolveLanguage", () => {
   it("prefers a supported URL language", () => {
-    expect(resolveLanguage("kz")).toBe("kz");
+    expect(resolveLanguage("kk")).toBe("kk");
   });
 
   it("falls back to English for unsupported values", () => {
@@ -16,7 +16,8 @@ describe("resolveLanguage", () => {
 
   it("recognizes only supported languages", () => {
     expect(isLanguage("en")).toBe(true);
-    expect(isLanguage("kk")).toBe(false);
+    expect(isLanguage("kk")).toBe(true);
+    expect(isLanguage("de")).toBe(false);
     expect(isLanguage(null)).toBe(false);
   });
 });

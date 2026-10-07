@@ -10,7 +10,7 @@ export function useLanguage() {
 
   useEffect(() => {
     void i18n.changeLanguage(language);
-    document.documentElement.lang = language === "kz" ? "kk" : "en";
+    document.documentElement.lang = language;
 
     const url = new URL(window.location.href);
     if (language === "en") url.searchParams.delete("lang");

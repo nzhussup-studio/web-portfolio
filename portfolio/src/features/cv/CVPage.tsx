@@ -18,7 +18,7 @@ const sections = ["experience", "education", "skills", "certificates"] as const;
 
 export function CVPage() {
   const { t, i18n } = useTranslation();
-  const locale = i18n.language === "kz" ? "kk" : "en";
+  const locale = i18n.language === "kk" ? "kk" : "en";
   const work = useQuery({ queryKey: queryKeys.cv.work, queryFn: getWorkExperience });
   const education = useQuery({ queryKey: queryKeys.cv.education, queryFn: getEducation });
   const skills = useQuery({ queryKey: queryKeys.cv.skills, queryFn: getSkills });
