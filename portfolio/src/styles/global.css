@@ -452,11 +452,12 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
   .album-detail-meta { flex-wrap: wrap; gap: .5rem 1.25rem; }
   .photo-grid { padding-top: 2rem; gap: .75rem; }
 
-  .footer-grid { padding: 1.75rem 0 2.25rem; gap: 1.25rem; }
-  .footer-signature { align-items: flex-start; flex-direction: column; gap: .4rem; }
-  .footer-links { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-content: space-between; gap: .25rem 1rem; }
+  .footer-grid { padding: 1.75rem 0 max(2.25rem, env(safe-area-inset-bottom)); gap: 1.25rem; }
+  .footer-signature { width: 100%; align-items: center; justify-content: space-between; flex-direction: row; gap: 1rem; }
+  .footer-logo { width: 3rem; }
+  .footer-links { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.5rem; }
+  .footer-links a { min-height: 2.75rem; width: fit-content; }
   .footer-links a:nth-child(even) { justify-self: end; }
-  .footer-links a { min-height: 2.75rem; }
   .back-to-top { right: 1rem; bottom: 1rem; width: 2.75rem; height: 2.75rem; }
 }
 
@@ -470,8 +471,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
   .story-route i { flex: 1; width: auto; }
   .page-state-actions { align-items: stretch; flex-direction: column; }
   .page-state-actions a, .page-state-actions button { width: 100%; justify-content: center; }
-  .footer-links { grid-template-columns: 1fr; }
-  .footer-links a { width: fit-content; }
 }
 
 @media (hover: none) {
