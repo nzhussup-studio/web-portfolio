@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import type { Language } from "../../app/preferences";
 import { queryKeys } from "../../api/queryKeys";
 import profilePhoto from "./assets/nurik.jpeg";
-import skiingPhoto from "./assets/nurik-skiing.jpeg";
+import mountainsPhoto from "./assets/mountains.jpeg";
 import forestPhoto from "./assets/forest.jpeg";
 import { fetchSummary } from "./aboutApi";
 
@@ -169,7 +169,7 @@ export function AboutPage({ language }: AboutPageProps) {
           </div>
           <div className="beyond-gallery">
             <figure className="beyond-photo beyond-photo-primary">
-              <img src={skiingPhoto} alt={t("portfolio.about.beyond.mountainAlt")} />
+              <img src={mountainsPhoto} alt={t("portfolio.about.beyond.mountainAlt")} />
               <figcaption>01 / mountains — reset perspective</figcaption>
             </figure>
             <figure className="beyond-photo beyond-photo-secondary">
