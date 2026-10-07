@@ -48,6 +48,7 @@ export function AboutPage({ language }: AboutPageProps) {
     return () => window.clearTimeout(timer);
   }, [paused, summary.data, visibleCharacters]);
 
+  const isGenerating = requested && summary.isFetching;
   const isRevealing = Boolean(summary.data && visibleCharacters < summary.data.length);
 
   return (
@@ -69,6 +70,11 @@ export function AboutPage({ language }: AboutPageProps) {
               <button className="summary-button" type="button" onClick={() => setRequested(true)}>
                 <Sparkles aria-hidden="true" />
                 {t("portfolio.about.generate")}
+              </button>
+            ) : isGenerating ? (
+              <button className="summary-button" type="button" disabled aria-busy="true">
+                <RefreshCw className="summary-spinner" aria-hidden="true" />
+                {t("portfolio.about.generating")}
               </button>
             ) : isRevealing ? (
               <button className="summary-button" type="button" onClick={() => setPaused((value) => !value)}>

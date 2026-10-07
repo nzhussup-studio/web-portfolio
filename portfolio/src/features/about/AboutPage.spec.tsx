@@ -16,4 +16,21 @@ describe("AboutPage", () => {
     await waitFor(() => expect(fetchSummary).toHaveBeenCalledWith("en", expect.any(AbortSignal)));
     expect(screen.getByText("ai.summary / live")).toBeInTheDocument();
   });
+
+  it("keeps a stable generating state until the summary arrives", async () => {
+    let resolveSummary: (value: string) => void = () => undefined;
+    vi.mocked(fetchSummary).mockImplementation(() => new Promise((resolve) => {
+      resolveSummary = resolve;
+    }));
+    renderWithApp(<AboutPage language="en" />);
+
+    fireEvent.click(screen.getByRole("button", { name: "portfolio.about.generate" }));
+
+    const generatingButton = await screen.findByRole("button", { name: "portfolio.about.generating" });
+    expect(generatingButton).toBeDisabled();
+    expect(screen.queryByRole("button", { name: "portfolio.about.regenerate" })).not.toBeInTheDocument();
+
+    resolveSummary("A summary that takes a moment to reveal.");
+    await screen.findByRole("button", { name: "portfolio.about.pause" });
+  });
 });

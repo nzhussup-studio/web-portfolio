@@ -92,6 +92,9 @@ img { max-width: 100%; }
 .summary-button:hover { background: var(--text); color: var(--background); }
 .summary-button:active { transform: scale(.98); }
 .summary-button svg { width: 1rem; height: 1rem; }
+.summary-button:disabled { border-color: var(--line); color: var(--muted); cursor: wait; }
+.summary-spinner { animation: summary-spin 1.4s linear infinite; }
+@keyframes summary-spin { to { transform: rotate(1turn); } }
 .ready-label { color: var(--muted); font: .82rem/1.4 ui-monospace, monospace; }
 .summary-output { position: relative; width: 100%; border: 1px solid var(--line); border-left: 2px solid var(--accent); background: color-mix(in srgb, var(--surface) 58%, transparent); padding: 2rem clamp(1.25rem, 3vw, 2.5rem); margin-bottom: 3rem; }
 .summary-output > p:last-child { font: 1rem/1.75 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); margin: 0; }

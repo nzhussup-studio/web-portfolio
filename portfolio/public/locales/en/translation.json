@@ -71,6 +71,7 @@
       "intro2": "I live in Vienna and come from Almaty. Most days, I’m designing an API, improving a user flow, working through a deployment problem, or collecting an unreasonable number of open browser tabs.",
       "profileAlt": "Portrait of Nurzhanat Zhussup",
       "generate": "Generate AI summary",
+      "generating": "Generating summary…",
       "pause": "Pause summary",
       "resume": "Resume summary",
       "regenerate": "Generate again",
