@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/nzhussup/personal-website/compare/v3.1.0...v3.2.0) (2026-10-07)
+
+
+### Features
+
+* add terminal ([1ca6842](https://github.com/nzhussup/personal-website/commit/1ca6842e2160323825000d52913cb221335797c3))
+* update about page ([037d8bb](https://github.com/nzhussup/personal-website/commit/037d8bb75832749f3ad2705e557b3b4a13239c59))
+
 ## [3.1.0](https://github.com/nzhussup/personal-website/compare/v3.0.1...v3.1.0) (2026-10-07)
 
 
