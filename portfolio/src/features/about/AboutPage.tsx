@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Layers3, MapPin, Pause, Play, RefreshCw, Sparkles } from "lucide-react";
+import { Layers3, MapPin, Pause, Play, RefreshCw, Sparkles, SquareTerminal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { Language } from "../../app/preferences";
@@ -179,6 +179,17 @@ export function AboutPage({ language }: AboutPageProps) {
           </div>
         </div>
       </section>
+
+      <aside className="nerd-note" aria-label={t("portfolio.about.curious.title")}>
+        <div>
+          <p className="code-label">{"// for the curious"}</p>
+          <h2>{t("portfolio.about.curious.title")}</h2>
+        </div>
+        <p>
+          <SquareTerminal aria-hidden="true" />
+          <span>{t("portfolio.about.curious.text")} <code>help</code>.</span>
+        </p>
+      </aside>
     </article>
   );
 }

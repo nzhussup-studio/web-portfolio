@@ -98,6 +98,10 @@
         "text2": "Skiing is the hobby I’d have the hardest time giving up. I also enjoy hiking, travelling, and taking photos along the way. Being outside clears my head and usually sends me back to the screen with better ideas—or at least with fewer tabs open.",
         "mountainAlt": "Nurzhanat skiing in the mountains",
         "hikeAlt": "A quiet forest along a mountain hike"
+      },
+      "curious": {
+        "title": "For the curious",
+        "text": "The terminal icon opens a different interface. Start with"
       }
     },
     "cv": {
