@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/nzhussup/personal-website/compare/v3.0.1...v3.1.0) (2026-10-07)
+
+
+### Features
+
+* add cv export feature ([e43978f](https://github.com/nzhussup/personal-website/commit/e43978f1bbcac7a318a88fef2b7b9f4153207b1f))
+* add logo ([c94e4e9](https://github.com/nzhussup/personal-website/commit/c94e4e9d0a7eab8f4cae186b50d1463f410c709e))
+* design adjustments ([05d58a1](https://github.com/nzhussup/personal-website/commit/05d58a1d2492fb7e68707d314e1040a5a375b087))
+
+
+### Bug Fixes
+
+* locale ([d280aea](https://github.com/nzhussup/personal-website/commit/d280aea4015d521d2fd22f3142b8c05f46a139df))
+
 ### [3.0.1](https://github.com/nzhussup/personal-website/compare/v3.0.0...v3.0.1) (2026-10-07)
 
 
