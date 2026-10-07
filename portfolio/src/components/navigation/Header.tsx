@@ -72,7 +72,7 @@ export function Header({
           </button>
           <span className="header-divider" aria-hidden="true" />
           <button
-            className="icon-button"
+            className="icon-button theme-toggle"
             type="button"
             onClick={onThemeToggle}
             aria-label={theme === "light" ? "Use dark theme" : "Use light theme"}

@@ -19,8 +19,20 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: clip; background: var(--background); }
-body { margin: 0; min-width: 320px; overflow-x: clip; background: var(--background); color: var(--text); transition: background-color .75s cubic-bezier(.16, 1, .3, 1), color .75s cubic-bezier(.16, 1, .3, 1); }
+body { margin: 0; min-width: 320px; overflow-x: clip; background: var(--background); color: var(--text); }
 body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 82% 8%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 24rem); }
+:root.is-theme-transition,
+:root.is-theme-transition body,
+:root.is-theme-transition body *:not(.nerd-terminal):not(.nerd-terminal *) {
+  transition-property: background-color, color, border-color, box-shadow, fill, stroke;
+  transition-duration: 650ms, 500ms, 500ms, 650ms, 500ms, 500ms;
+  transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+}
+:root.is-theme-transition .theme-toggle svg { animation: theme-icon-settle 650ms cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes theme-icon-settle {
+  from { opacity: .18; transform: rotate(-20deg) scale(.88); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
+}
 button { font: inherit; }
 a { color: inherit; }
 button, a { transition-timing-function: cubic-bezier(.16, 1, .3, 1); }
@@ -31,16 +43,6 @@ img { max-width: 100%; }
 .app-shell { min-height: 100vh; display: flex; flex-direction: column; }
 .interface-transition { min-height: 100vh; will-change: opacity; }
 .interface-transition-language { pointer-events: none; }
-.interface-transition-out { pointer-events: none; animation: interface-leave .42s cubic-bezier(.45, 0, .55, 1) both; }
-.interface-transition-in { animation: interface-enter .78s cubic-bezier(.16, 1, .3, 1) both; }
-@keyframes interface-leave {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-@keyframes interface-enter {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 #main-content { flex: 1; }
 .route-transition { will-change: opacity, transform; }
 .route-transition-out { pointer-events: none; animation: route-leave .42s cubic-bezier(.45, 0, .55, 1) both; }

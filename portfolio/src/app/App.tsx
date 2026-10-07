@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type AnimationEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { flushSync } from "react-dom";
 import { useLocation } from "react-router-dom";
@@ -19,10 +19,9 @@ export default function App() {
   const location = useLocation();
   const { language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
-  const [interfaceTransition, setInterfaceTransition] = useState<"idle" | "out" | "in" | "language">("idle");
+  const [interfaceTransition, setInterfaceTransition] = useState<"idle" | "language">("idle");
   const [nerdMode, setNerdMode] = useState(persistedNerdMode);
   const interfaceRoot = useRef<HTMLDivElement>(null);
-  const pendingUpdate = useRef<(() => void | Promise<void>) | null>(null);
 
   useEffect(() => {
     window.sessionStorage.setItem("nerd-mode", nerdMode ? "active" : "inactive");
@@ -45,25 +44,6 @@ export default function App() {
     );
   }, [language, location.key, theme]);
 
-  function transitionInterface(update: () => void | Promise<void>) {
-    if (interfaceTransition !== "idle") return;
-    pendingUpdate.current = update;
-    setInterfaceTransition("out");
-  }
-
-  async function finishInterfaceTransition(event: AnimationEvent<HTMLDivElement>) {
-    if (event.target !== event.currentTarget) return;
-
-    if (interfaceTransition === "out") {
-      await pendingUpdate.current?.();
-      pendingUpdate.current = null;
-      setInterfaceTransition("in");
-      return;
-    }
-
-    if (interfaceTransition === "in") setInterfaceTransition("idle");
-  }
-
   async function changeLanguage(next: Language) {
     const root = interfaceRoot.current;
     if (next === language || interfaceTransition !== "idle" || !root) return;
@@ -82,14 +62,13 @@ export default function App() {
     <div
       ref={interfaceRoot}
       className={`interface-transition interface-transition-${interfaceTransition}`}
-      onAnimationEnd={finishInterfaceTransition}
     >
       <div className={nerdMode ? "nerd-gui is-hidden" : "nerd-gui"} aria-hidden={nerdMode || undefined}>
         <AppShell
           language={language}
           onLanguageChange={changeLanguage}
           theme={theme}
-          onThemeToggle={() => transitionInterface(toggleTheme)}
+          onThemeToggle={toggleTheme}
           nerdModeAvailable
           onNerdModeToggle={() => setNerdMode(true)}
         >
