@@ -1,4 +1,5 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { renderWithApp } from "../../test/render";
 import { AboutPage } from "./AboutPage";
@@ -32,5 +33,35 @@ describe("AboutPage", () => {
 
     resolveSummary("A summary that takes a moment to reveal.");
     await screen.findByRole("button", { name: "portfolio.about.pause" });
+  });
+
+  it("cancels generation and returns to idle when the language changes", async () => {
+    let aborted = false;
+    vi.mocked(fetchSummary).mockImplementation((_language, signal) => new Promise((_resolve, reject) => {
+      signal?.addEventListener("abort", () => {
+        aborted = true;
+        reject(new DOMException("Aborted", "AbortError"));
+      });
+    }));
+
+    function LanguageHarness() {
+      const [language, setLanguage] = useState<"en" | "kk">("en");
+      return (
+        <>
+          <button type="button" onClick={() => setLanguage("kk")}>Switch language</button>
+          <AboutPage language={language} />
+        </>
+      );
+    }
+
+    renderWithApp(<LanguageHarness />);
+    fireEvent.click(screen.getByRole("button", { name: "portfolio.about.generate" }));
+    await screen.findByRole("button", { name: "portfolio.about.generating" });
+
+    fireEvent.click(screen.getByRole("button", { name: "Switch language" }));
+
+    await waitFor(() => expect(aborted).toBe(true));
+    expect(screen.getByRole("button", { name: "portfolio.about.generate" })).toBeEnabled();
+    expect(screen.queryByText("ai.summary / live")).not.toBeInTheDocument();
   });
 });

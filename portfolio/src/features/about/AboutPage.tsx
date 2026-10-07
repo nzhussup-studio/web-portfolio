@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Layers3, MapPin, Pause, Play, RefreshCw, Sparkles, SquareTerminal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -21,9 +21,11 @@ const profileFacts = [
 
 export function AboutPage({ language }: AboutPageProps) {
   const { t } = useTranslation();
-  const [requested, setRequested] = useState(false);
+  const queryClient = useQueryClient();
+  const [requestedLanguage, setRequestedLanguage] = useState<Language | null>(null);
   const [visibleCharacters, setVisibleCharacters] = useState(0);
   const [paused, setPaused] = useState(false);
+  const requested = requestedLanguage === language;
 
   const summary = useQuery({
     queryKey: queryKeys.about.summary(language),
@@ -34,10 +36,14 @@ export function AboutPage({ language }: AboutPageProps) {
   });
 
   useEffect(() => {
-    setRequested(false);
+    setRequestedLanguage(null);
     setVisibleCharacters(0);
     setPaused(false);
   }, [language]);
+
+  useEffect(() => () => {
+    void queryClient.cancelQueries({ queryKey: queryKeys.about.summary(language) });
+  }, [language, queryClient]);
 
   useEffect(() => {
     if (!summary.data || paused || visibleCharacters >= summary.data.length) return;
@@ -67,7 +73,7 @@ export function AboutPage({ language }: AboutPageProps) {
           </div>
           <div className="summary-action">
             {!requested ? (
-              <button className="summary-button" type="button" onClick={() => setRequested(true)}>
+              <button className="summary-button" type="button" onClick={() => setRequestedLanguage(language)}>
                 <Sparkles aria-hidden="true" />
                 {t("portfolio.about.generate")}
               </button>
