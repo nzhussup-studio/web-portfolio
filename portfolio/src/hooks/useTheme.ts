@@ -35,7 +35,7 @@ export function useTheme() {
       root.classList.add("is-theme-transition");
       transitionTimer.current = window.setTimeout(() => {
         root.classList.remove("is-theme-transition");
-      }, 700);
+      }, 900);
     }
     setTheme((current) => (current === "light" ? "dark" : "light"));
   }, []);

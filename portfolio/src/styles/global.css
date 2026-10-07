@@ -25,10 +25,10 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 :root.is-theme-transition body,
 :root.is-theme-transition body *:not(.nerd-terminal):not(.nerd-terminal *) {
   transition-property: background-color, color, border-color, box-shadow, fill, stroke;
-  transition-duration: 650ms, 500ms, 500ms, 650ms, 500ms, 500ms;
+  transition-duration: 850ms, 700ms, 700ms, 850ms, 700ms, 700ms;
   transition-timing-function: cubic-bezier(.22, 1, .36, 1);
 }
-:root.is-theme-transition .theme-toggle svg { animation: theme-icon-settle 650ms cubic-bezier(.22, 1, .36, 1) both; }
+:root.is-theme-transition .theme-toggle svg { animation: theme-icon-settle 850ms cubic-bezier(.22, 1, .36, 1) both; }
 @keyframes theme-icon-settle {
   from { opacity: .18; transform: rotate(-20deg) scale(.88); }
   to { opacity: 1; transform: rotate(0) scale(1); }
