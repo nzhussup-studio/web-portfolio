@@ -1,9 +1,11 @@
 import { ExternalLink } from "lucide-react";
+import { profile } from "../../app/profile";
 
 const links = [
-  { label: "Email", href: "mailto:zhussup.nb@gmail.com" },
-  { label: "GitHub", href: "https://github.com/nzhussup" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/nurzhanat-zhussup/" },
+  { label: "Email", href: `mailto:${profile.email}` },
+  { label: "GitHub", href: profile.githubUrl },
+  { label: "Studio", href: profile.githubOrganizationUrl },
+  { label: "LinkedIn", href: profile.linkedinUrl },
 ];
 
 export function Footer() {
@@ -12,7 +14,7 @@ export function Footer() {
       <div className="site-container footer-grid">
         <div className="footer-signature">
           <strong>NZ.</strong>
-          <span>© {new Date().getFullYear()} Nurzhanat Zhussup</span>
+          <span>© {new Date().getFullYear()} {profile.name}</span>
         </div>
         <nav className="footer-links" aria-label="External links">
           {links.map((link) => (

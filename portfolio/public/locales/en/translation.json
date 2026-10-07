@@ -101,6 +101,9 @@
       }
     },
     "cv": {
+      "downloadPdf": "Download PDF",
+      "pdfRetry": "Try PDF again",
+      "pdfTitle": "Software Engineer",
       "title": "Curriculum vitae",
       "sectionNavigation": "CV sections",
       "progress": "CV reading progress",

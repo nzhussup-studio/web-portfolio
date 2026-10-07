@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, FileDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -28,6 +28,38 @@ export function CVPage() {
   const progressRef = useRef<HTMLSpanElement>(null);
   const progressFillRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("experience");
+  const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
+  const [pdfFailed, setPdfFailed] = useState(false);
+
+  async function downloadPdf() {
+    if (isDownloadingPdf) return;
+    setIsDownloadingPdf(true);
+    setPdfFailed(false);
+
+    try {
+      const { downloadCvPdf } = await import("./cvPdf");
+      await downloadCvPdf({
+        work: work.data ?? [],
+        education: education.data ?? [],
+        skills: skills.data ?? [],
+        certificates: certificates.data ?? [],
+        locale,
+        labels: {
+          title: t("portfolio.cv.pdfTitle"),
+          experience: t("portfolio.cv.experience"),
+          education: t("portfolio.cv.education"),
+          skills: t("portfolio.cv.skills"),
+          certificates: t("portfolio.cv.certificates"),
+          present: t("portfolio.cv.present"),
+          thesis: t("portfolio.cv.thesis"),
+        },
+      });
+    } catch {
+      setPdfFailed(true);
+    } finally {
+      setIsDownloadingPdf(false);
+    }
+  }
 
   useEffect(() => {
     let animationFrame = 0;
@@ -84,7 +116,22 @@ export function CVPage() {
 
   return (
     <article className="content-page site-container">
-      <PageIntro eyebrow="curriculum_vitae / 02" title={t("portfolio.cv.title")} />
+      <PageIntro
+        eyebrow="curriculum_vitae / 02"
+        title={t("portfolio.cv.title")}
+        aside={(
+          <button
+            className="pdf-download"
+            type="button"
+            onClick={() => void downloadPdf()}
+            disabled={isDownloadingPdf}
+            aria-busy={isDownloadingPdf}
+          >
+            <FileDown aria-hidden="true" />
+            <span>{pdfFailed ? t("portfolio.cv.pdfRetry") : t("portfolio.cv.downloadPdf")}</span>
+          </button>
+        )}
+      />
 
       <nav className="section-nav" aria-label={t("portfolio.cv.sectionNavigation")}>
         {sections.map((section) => (

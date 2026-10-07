@@ -1,8 +1,9 @@
-import { screen } from "@testing-library/react";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { getCertificates, getEducation, getSkills, getWorkExperience } from "../../api/queries/cv";
 import { renderWithApp } from "../../test/render";
 import { CVPage } from "./CVPage";
+import { downloadCvPdf } from "./cvPdf";
 
 vi.mock("../../api/queries/cv", () => ({
   getCertificates: vi.fn(),
@@ -10,6 +11,7 @@ vi.mock("../../api/queries/cv", () => ({
   getSkills: vi.fn(),
   getWorkExperience: vi.fn(),
 }));
+vi.mock("./cvPdf", () => ({ downloadCvPdf: vi.fn() }));
 
 describe("CVPage", () => {
   it("renders all API-backed CV sections", async () => {
@@ -27,5 +29,13 @@ describe("CVPage", () => {
     expect(screen.getByRole("heading", { name: "Economics" })).toBeInTheDocument();
     expect(screen.getByText("Kubernetes, AWS")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Cloud" })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "portfolio.cv.downloadPdf" }));
+    await waitFor(() => expect(downloadCvPdf).toHaveBeenCalledWith(expect.objectContaining({
+      work: expect.arrayContaining([expect.objectContaining({ company: "Example" })]),
+      education: expect.arrayContaining([expect.objectContaining({ institution: "WU Vienna" })]),
+      skills: expect.arrayContaining([expect.objectContaining({ category: "Infrastructure" })]),
+      certificates: expect.arrayContaining([expect.objectContaining({ name: "Cloud" })]),
+    })));
   });
 });

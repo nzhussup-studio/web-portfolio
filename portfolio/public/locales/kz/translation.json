@@ -101,6 +101,9 @@
       }
     },
     "cv": {
+      "downloadPdf": "PDF жүктеу",
+      "pdfRetry": "PDF қайта жүктеу",
+      "pdfTitle": "Бағдарламалық инженер",
       "title": "Түйіндеме",
       "sectionNavigation": "Түйіндеме бөлімдері",
       "progress": "Түйіндемені оқу барысы",

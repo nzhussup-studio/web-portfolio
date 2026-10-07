@@ -14,6 +14,10 @@ describe("Footer", () => {
       "href",
       "https://github.com/nzhussup",
     );
+    expect(screen.getByRole("link", { name: /studio/i })).toHaveAttribute(
+      "href",
+      "https://github.com/nzhussup-studio",
+    );
     expect(screen.getByRole("link", { name: /linkedin/i })).toHaveAttribute(
       "href",
       "https://www.linkedin.com/in/nurzhanat-zhussup/",
