@@ -187,7 +187,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 .section-nav a { position: relative; text-decoration: none; color: var(--muted); padding: 1.1rem 0; white-space: nowrap; transition: color .2s ease; }
 .section-nav a:hover, .section-nav a:focus-visible, .section-nav a.is-active { color: var(--text); }
 .cv-progress { position: absolute; right: max(var(--page-gutter), calc((100vw - var(--content-width)) / 2)); bottom: -2px; left: max(var(--page-gutter), calc((100vw - var(--content-width)) / 2)); height: 3px; pointer-events: none; overflow: hidden; }
-.cv-progress i { display: block; height: 100%; background: var(--accent); transition: width .1s linear; }
+.cv-progress i { display: block; width: 100%; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left center; will-change: transform; }
 .linear-section { scroll-margin-top: calc(var(--header-height) + 5rem); padding: clamp(3.5rem, 7vw, 7rem) 0 0; }
 .linear-section > h2 { margin: 0 0 1.5rem; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
 .linear-section > .code-label { margin-bottom: .75rem; }

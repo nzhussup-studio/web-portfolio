@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { ExternalLink } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   getCertificates,
@@ -24,32 +24,50 @@ export function CVPage() {
   const skills = useQuery({ queryKey: queryKeys.cv.skills, queryFn: getSkills });
   const certificates = useQuery({ queryKey: queryKeys.cv.certificates, queryFn: getCertificates });
   const queries = [work, education, skills, certificates];
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const isInitialLoading = queries.every((query) => query.isPending);
+  const progressRef = useRef<HTMLSpanElement>(null);
+  const progressFillRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("experience");
 
   useEffect(() => {
+    let animationFrame = 0;
+
     const updateScrollState = () => {
       const root = document.documentElement;
-      setScrollProgress(calculateScrollProgress(window.scrollY, root.scrollHeight, root.clientHeight));
+      const progress = calculateScrollProgress(window.scrollY, root.scrollHeight, root.clientHeight);
+
+      progressFillRef.current?.style.setProperty("transform", `scaleX(${progress / 100})`);
+      progressRef.current?.setAttribute("aria-valuenow", String(Math.round(progress)));
 
       const activationLine = Math.min(window.innerHeight * 0.35, 280);
       const current = [...sections].reverse().find((section) => {
         const element = document.getElementById(section);
         return element ? element.getBoundingClientRect().top <= activationLine : false;
       });
-      setActiveSection(current ?? "experience");
+      const nextSection = current ?? "experience";
+      setActiveSection((previousSection) => previousSection === nextSection ? previousSection : nextSection);
+    };
+
+    const scheduleUpdate = () => {
+      if (animationFrame) return;
+
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = 0;
+        updateScrollState();
+      });
     };
 
     updateScrollState();
-    window.addEventListener("scroll", updateScrollState, { passive: true });
-    window.addEventListener("resize", updateScrollState);
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
     return () => {
-      window.removeEventListener("scroll", updateScrollState);
-      window.removeEventListener("resize", updateScrollState);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
     };
-  }, []);
+  }, [isInitialLoading]);
 
-  if (queries.every((query) => query.isPending)) {
+  if (isInitialLoading) {
     return <PageState eyebrow="curriculum_vitae / 02" title={t("portfolio.common.loading")} />;
   }
 
@@ -80,14 +98,14 @@ export function CVPage() {
           </a>
         ))}
         <span
+          ref={progressRef}
           className="cv-progress"
           role="progressbar"
           aria-label={t("portfolio.cv.progress")}
           aria-valuemin={0}
           aria-valuemax={100}
-          aria-valuenow={Math.round(scrollProgress)}
         >
-          <i style={{ width: `${scrollProgress}%` }} />
+          <i ref={progressFillRef} />
         </span>
       </nav>
 

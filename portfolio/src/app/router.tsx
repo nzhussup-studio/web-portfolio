@@ -8,6 +8,7 @@ import { AlbumsPage } from "../features/albums/AlbumsPage";
 import { CVPage } from "../features/cv/CVPage";
 import { ProjectsPage } from "../features/projects/ProjectsPage";
 import type { Language } from "./preferences";
+import { shouldTransitionPage } from "./routeTransition";
 
 export function AppRouter({ language }: { language: Language }) {
   const { t } = useTranslation();
@@ -16,8 +17,12 @@ export function AppRouter({ language }: { language: Language }) {
   const [transition, setTransition] = useState<"idle" | "out" | "in">("idle");
 
   useEffect(() => {
-    if (location.key !== displayLocation.key) setTransition("out");
-  }, [displayLocation.key, location.key]);
+    if (shouldTransitionPage(displayLocation.pathname, location.pathname)) {
+      setTransition("out");
+    } else if (location.key !== displayLocation.key) {
+      setDisplayLocation(location);
+    }
+  }, [displayLocation, location]);
 
   function finishTransition(event: AnimationEvent<HTMLDivElement>) {
     if (event.target !== event.currentTarget) return;
