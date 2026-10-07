@@ -25,6 +25,7 @@ img { max-width: 100%; }
 .site-container { width: min(calc(100% - (var(--page-gutter) * 2)), var(--content-width)); margin-inline: auto; }
 .app-shell { min-height: 100vh; display: flex; flex-direction: column; }
 .interface-transition { min-height: 100vh; will-change: opacity; }
+.interface-transition-language { pointer-events: none; }
 .interface-transition-out { pointer-events: none; animation: interface-leave .42s cubic-bezier(.45, 0, .55, 1) both; }
 .interface-transition-in { animation: interface-enter .78s cubic-bezier(.16, 1, .3, 1) both; }
 @keyframes interface-leave {
