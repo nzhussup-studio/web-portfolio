@@ -7,18 +7,23 @@ describe("Header", () => {
   it("renders navigation and exposes preference controls", () => {
     const changeLanguage = vi.fn();
     const toggleTheme = vi.fn();
+    const toggleNerdMode = vi.fn();
     renderWithApp(
       <Header
         language="en"
         onLanguageChange={changeLanguage}
         theme="light"
         onThemeToggle={toggleTheme}
+        nerdModeAvailable
+        onNerdModeToggle={toggleNerdMode}
       />,
       { route: "/projects" },
     );
 
     expect(screen.getByRole("link", { name: "Nurzhanat Zhussup home" }).querySelector("img")).toHaveAttribute("src", "/brand/nz-light.svg");
     expect(screen.getByRole("link", { name: "Projects" })).toHaveClass("is-active");
+    fireEvent.click(screen.getByRole("button", { name: "Enter Nerd Mode" }));
+    expect(toggleNerdMode).toHaveBeenCalledOnce();
     fireEvent.click(screen.getByRole("button", { name: "Қазақ тіліне ауысу" }));
     expect(changeLanguage).toHaveBeenCalledWith("kz");
     fireEvent.click(screen.getByRole("button", { name: "Use dark theme" }));

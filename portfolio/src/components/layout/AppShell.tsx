@@ -9,6 +9,8 @@ type AppShellProps = PropsWithChildren<{
   onLanguageChange: (language: Language) => void;
   theme: Theme;
   onThemeToggle: () => void;
+  nerdModeAvailable?: boolean;
+  onNerdModeToggle?: () => void;
 }>;
 
 export function AppShell({
@@ -17,6 +19,8 @@ export function AppShell({
   onLanguageChange,
   theme,
   onThemeToggle,
+  nerdModeAvailable = false,
+  onNerdModeToggle,
 }: AppShellProps) {
   return (
     <div className="app-shell">
@@ -25,6 +29,8 @@ export function AppShell({
         onLanguageChange={onLanguageChange}
         theme={theme}
         onThemeToggle={onThemeToggle}
+        nerdModeAvailable={nerdModeAvailable}
+        onNerdModeToggle={onNerdModeToggle}
       />
       <main id="main-content">{children}</main>
       <BackToTop />

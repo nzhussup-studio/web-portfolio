@@ -1,4 +1,4 @@
-import { Moon, Sun } from "lucide-react";
+import { Moon, SquareTerminal, Sun } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import type { Language } from "../../app/preferences";
 import type { Theme } from "../../app/preferences";
@@ -8,6 +8,8 @@ type HeaderProps = {
   onLanguageChange: (language: Language) => void;
   theme: Theme;
   onThemeToggle: () => void;
+  nerdModeAvailable?: boolean;
+  onNerdModeToggle?: () => void;
 };
 
 const navigation = [
@@ -22,6 +24,8 @@ export function Header({
   onLanguageChange,
   theme,
   onThemeToggle,
+  nerdModeAvailable = false,
+  onNerdModeToggle,
 }: HeaderProps) {
   return (
     <header className="site-header">
@@ -44,6 +48,20 @@ export function Header({
         </nav>
 
         <div className="header-actions">
+          {nerdModeAvailable && (
+            <>
+              <button
+                className="icon-button nerd-mode-toggle"
+                type="button"
+                onClick={onNerdModeToggle}
+                aria-label="Enter Nerd Mode"
+                title="Nerd Mode"
+              >
+                <SquareTerminal aria-hidden="true" />
+              </button>
+              <span className="header-divider" aria-hidden="true" />
+            </>
+          )}
           <button
             className="language-button"
             type="button"

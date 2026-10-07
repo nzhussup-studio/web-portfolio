@@ -3,11 +3,16 @@ import { useTranslation } from "react-i18next";
 import { flushSync } from "react-dom";
 import { useLocation } from "react-router-dom";
 import { AppShell } from "../components/layout/AppShell";
+import { NerdTerminal } from "../features/terminal/NerdTerminal";
 import { useLanguage } from "../hooks/useLanguage";
 import { useTheme } from "../hooks/useTheme";
 import type { Language } from "./preferences";
 import { AppRouter } from "./router";
 import { captureText, rewriteText } from "./textTransition";
+
+function persistedNerdMode() {
+  return typeof window !== "undefined" && window.sessionStorage.getItem("nerd-mode") === "active";
+}
 
 export default function App() {
   const { i18n } = useTranslation();
@@ -15,8 +20,17 @@ export default function App() {
   const { language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const [interfaceTransition, setInterfaceTransition] = useState<"idle" | "out" | "in" | "language">("idle");
+  const [nerdMode, setNerdMode] = useState(persistedNerdMode);
   const interfaceRoot = useRef<HTMLDivElement>(null);
   const pendingUpdate = useRef<(() => void | Promise<void>) | null>(null);
+
+  useEffect(() => {
+    window.sessionStorage.setItem("nerd-mode", nerdMode ? "active" : "inactive");
+    if (!nerdMode) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [nerdMode]);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -70,14 +84,19 @@ export default function App() {
       className={`interface-transition interface-transition-${interfaceTransition}`}
       onAnimationEnd={finishInterfaceTransition}
     >
-      <AppShell
-        language={language}
-        onLanguageChange={changeLanguage}
-        theme={theme}
-        onThemeToggle={() => transitionInterface(toggleTheme)}
-      >
-        <AppRouter language={language} />
-      </AppShell>
+      <div className={nerdMode ? "nerd-gui is-hidden" : "nerd-gui"} aria-hidden={nerdMode || undefined}>
+        <AppShell
+          language={language}
+          onLanguageChange={changeLanguage}
+          theme={theme}
+          onThemeToggle={() => transitionInterface(toggleTheme)}
+          nerdModeAvailable
+          onNerdModeToggle={() => setNerdMode(true)}
+        >
+          <AppRouter language={language} />
+        </AppShell>
+      </div>
+      {nerdMode && <NerdTerminal onExit={() => setNerdMode(false)} />}
     </div>
   );
 }
