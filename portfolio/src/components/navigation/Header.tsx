@@ -27,7 +27,7 @@ export function Header({
     <header className="site-header">
       <div className="site-container header-grid">
         <NavLink className="wordmark" to="/" aria-label="Nurzhanat Zhussup home">
-          NZ<span aria-hidden="true">.</span>
+          <img src={`/brand/nz-${theme}.svg`} alt="" aria-hidden="true" />
         </NavLink>
 
         <nav className="primary-nav" aria-label="Primary navigation">

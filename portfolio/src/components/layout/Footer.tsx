@@ -13,7 +13,10 @@ export function Footer() {
     <footer className="site-footer">
       <div className="site-container footer-grid">
         <div className="footer-signature">
-          <strong>NZ.</strong>
+          <a className="footer-logo" href="/" aria-label="Nurzhanat Zhussup home">
+            <img className="footer-logo-light" src="/brand/nz-light.svg" alt="" aria-hidden="true" />
+            <img className="footer-logo-dark" src="/brand/nz-dark.svg" alt="" aria-hidden="true" />
+          </a>
           <span>© {new Date().getFullYear()} {profile.name}</span>
         </div>
         <nav className="footer-links" aria-label="External links">

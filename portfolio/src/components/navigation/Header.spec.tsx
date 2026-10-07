@@ -17,6 +17,7 @@ describe("Header", () => {
       { route: "/projects" },
     );
 
+    expect(screen.getByRole("link", { name: "Nurzhanat Zhussup home" }).querySelector("img")).toHaveAttribute("src", "/brand/nz-light.svg");
     expect(screen.getByRole("link", { name: "Projects" })).toHaveClass("is-active");
     fireEvent.click(screen.getByRole("button", { name: "Қазақ тіліне ауысу" }));
     expect(changeLanguage).toHaveBeenCalledWith("kz");
@@ -35,6 +36,7 @@ describe("Header", () => {
       />,
     );
 
+    expect(screen.getByRole("link", { name: "Nurzhanat Zhussup home" }).querySelector("img")).toHaveAttribute("src", "/brand/nz-dark.svg");
     expect(screen.getByRole("link", { name: "Мен туралы" })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Switch to English" }));
     expect(changeLanguage).toHaveBeenCalledWith("en");

@@ -6,6 +6,7 @@ describe("Footer", () => {
   it("exposes the approved contact links", () => {
     render(<Footer />);
 
+    expect(screen.getByRole("link", { name: "Nurzhanat Zhussup home" })).toHaveAttribute("href", "/");
     expect(screen.getByRole("link", { name: /email/i })).toHaveAttribute(
       "href",
       "mailto:zhussup.nb@gmail.com",
