@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/nzhussup/personal-website/compare/v2.2.0...v3.0.0) (2026-10-07)
+
+
+### Features
+
+* add new animation for text transition ([597b051](https://github.com/nzhussup/personal-website/commit/597b051e7e33d3f916c1b705447a7b4dd5c9f06c))
+* add tests ([bcca678](https://github.com/nzhussup/personal-website/commit/bcca67819e070244e5d7af45d148d4e345fe21dd))
+* adjust color palette and add readme with agents ([f20b71c](https://github.com/nzhussup/personal-website/commit/f20b71cca2ce9f5931c64d78ae3f865774bb32ac))
+* final touches ([aadc718](https://github.com/nzhussup/personal-website/commit/aadc7189c5b415f3d30db6801a12cb09c01232ab))
+* fundamental refactoring ([40e6414](https://github.com/nzhussup/personal-website/commit/40e641422bf599a8361bf26f88eea67af6583793))
+* modifications ([5a6ddf9](https://github.com/nzhussup/personal-website/commit/5a6ddf96768290a8f4b9b9cb4d48e37b159aad9f))
+* refined refactoring ([dc90c88](https://github.com/nzhussup/personal-website/commit/dc90c8822699d8f40b89c53851c9718ba72c0d1c))
+* restructure codebase ([43b14ef](https://github.com/nzhussup/personal-website/commit/43b14ef62a301ba64b64c35bc1348b1eddcdd158))
+* update visuals ([c81821d](https://github.com/nzhussup/personal-website/commit/c81821de715c51b82ec1a3a0bd0987a6e500a3db))
+
+
+### Bug Fixes
+
+* replace url ([d1a41c4](https://github.com/nzhussup/personal-website/commit/d1a41c41654d9dd3aedbd3baefed36950691b30f))
+* unify CI/CD pipeline ([3e633d2](https://github.com/nzhussup/personal-website/commit/3e633d286958a58f03c305ff4a7c5306250b664d))
+* unify CI/CD pipeline ([aa98e08](https://github.com/nzhussup/personal-website/commit/aa98e0803e7d013780d6308ff1b05fd34bc029a3))
+
 ## [2.2.0](https://github.com/nzhussup/personal-website/compare/v2.1.0...v2.2.0) (2026-03-19)
 
 
