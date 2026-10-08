@@ -15,6 +15,7 @@ import notoSansMonoBold from "@fontsource/noto-sans-mono/files/noto-sans-mono-cy
 import { profile } from "../../app/profile";
 import type { Certificate, Education, Skill, WorkExperience } from "../../api/types";
 import { formatRange } from "./cvData";
+import { parsePdfDescription, pdfBulletForLevel } from "./cvPdfMarkdown";
 
 export const CV_PDF_FILENAME = "Nurzhanat_Zhussup_CV.pdf";
 
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
   bulletRow: { flexDirection: "row", marginBottom: 1.6 },
   bullet: { width: 8, color: colors.accent },
   bulletText: { flex: 1, color: colors.muted },
+  bulletTextStrong: { color: colors.text, fontFamily: "Noto Sans", fontWeight: 700 },
   tech: { marginTop: 2.5, color: colors.accent, fontFamily: "Noto Sans Mono", fontSize: 6.8, lineHeight: 1.35 },
   compactGrid: { flexDirection: "row", flexWrap: "wrap", borderTopWidth: 0.5, borderTopColor: colors.line },
   compactRow: { width: "50%", paddingTop: 5.5, paddingRight: 12, paddingBottom: 5.5, borderBottomWidth: 0.5, borderBottomColor: colors.line },
@@ -103,13 +105,6 @@ const styles = StyleSheet.create({
   certificateLink: { color: colors.accent, textDecoration: "none", fontFamily: "Noto Sans Mono", fontSize: 6.8 },
   footer: { position: "absolute", right: 51, bottom: 24, left: 51, flexDirection: "row", justifyContent: "space-between", color: colors.muted, fontFamily: "Noto Sans Mono", fontSize: 6.5 },
 });
-
-function descriptionLines(description: string | undefined) {
-  return description?.split(/\r?\n/).map((line) => {
-    const value = line.trim();
-    return { value: value.replace(/^[•*-]\s*/, ""), isBullet: /^[•*-]\s*/.test(value) };
-  }).filter((line) => line.value) ?? [];
-}
 
 function SectionLabel({ children }: { children: string }) {
   return <Text style={styles.sectionLabel} minPresenceAhead={36}>{`// ${children.toLowerCase()}`}</Text>;
@@ -159,11 +154,12 @@ export function CvPdfDocument({ work, education, skills, certificates, locale, l
                 <View style={styles.entryContent}>
                   <Text style={styles.entryTitle}>{item.position}</Text>
                   <Text style={styles.entrySubtitle}>{item.company}</Text>
-                  {descriptionLines(item.description).map((line) => line.isBullet ? (
-                    <View key={line.value} style={styles.bulletRow}>
-                      <Text style={styles.bullet}>•</Text><Text style={styles.bulletText}>{line.value}</Text>
+                  {parsePdfDescription(item.description).map((line, lineIndex) => line.isBullet ? (
+                    <View key={`${line.value}-${lineIndex}`} style={[styles.bulletRow, { marginLeft: line.level * 10 }]}>
+                      <Text style={styles.bullet}>{pdfBulletForLevel(line.level)}</Text>
+                      <Text style={[styles.bulletText, ...(line.isStrong ? [styles.bulletTextStrong] : [])]}>{line.value}</Text>
                     </View>
-                  ) : <Text key={line.value} style={styles.bodyLine}>{line.value}</Text>)}
+                  ) : <Text key={`${line.value}-${lineIndex}`} style={styles.bodyLine}>{line.value}</Text>)}
                   {item.techStack && <Text style={styles.tech}>{item.techStack}</Text>}
                 </View>
               </View>
@@ -184,7 +180,12 @@ export function CvPdfDocument({ work, education, skills, certificates, locale, l
                   <Text style={styles.entryTitle}>{item.degree}</Text>
                   <Text style={styles.entrySubtitle}>{item.institution}</Text>
                   {item.thesis && <Text style={styles.bodyLine}>{labels.thesis}: {item.thesis}</Text>}
-                  {descriptionLines(item.description).map((line) => <Text key={line.value} style={styles.bodyLine}>{line.value}</Text>)}
+                  {parsePdfDescription(item.description).map((line, lineIndex) => line.isBullet ? (
+                    <View key={`${line.value}-${lineIndex}`} style={[styles.bulletRow, { marginLeft: line.level * 10 }]}>
+                      <Text style={styles.bullet}>{pdfBulletForLevel(line.level)}</Text>
+                      <Text style={[styles.bulletText, ...(line.isStrong ? [styles.bulletTextStrong] : [])]}>{line.value}</Text>
+                    </View>
+                  ) : <Text key={`${line.value}-${lineIndex}`} style={styles.bodyLine}>{line.value}</Text>)}
                 </View>
               </View>
             ))}

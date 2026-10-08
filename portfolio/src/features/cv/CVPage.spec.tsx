@@ -16,7 +16,13 @@ vi.mock("./cvPdf", () => ({ downloadCvPdf: vi.fn() }));
 describe("CVPage", () => {
   it("renders all API-backed CV sections", async () => {
     vi.mocked(getWorkExperience).mockResolvedValue([
-      { id: 1, position: "Software Engineer", company: "Example", startDate: "2024-01-01" },
+      {
+        id: 1,
+        position: "Software Engineer",
+        company: "Example",
+        startDate: "2024-01-01",
+        description: "- Built **reliable systems**\n  - Automated releases",
+      },
     ]);
     vi.mocked(getEducation).mockResolvedValue([
       { id: 2, degree: "Economics", institution: "WU Vienna", startDate: "2020-01-01" },
@@ -26,6 +32,8 @@ describe("CVPage", () => {
     renderWithApp(<CVPage />);
 
     expect(await screen.findByRole("heading", { name: "Software Engineer" })).toBeInTheDocument();
+    expect(screen.getByText("reliable systems")).toHaveProperty("tagName", "STRONG");
+    expect(screen.getByText("Automated releases")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Economics" })).toBeInTheDocument();
     expect(screen.getByText("Kubernetes, AWS")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Cloud" })).toBeInTheDocument();

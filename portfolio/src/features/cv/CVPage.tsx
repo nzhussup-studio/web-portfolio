@@ -10,6 +10,7 @@ import {
 } from "../../api/queries/cv";
 import { queryKeys } from "../../api/queryKeys";
 import { PageState } from "../../components/feedback/PageState";
+import { MarkdownContent } from "../../components/data-display/MarkdownContent";
 import { PageIntro } from "../../components/layout/PageIntro";
 import { formatRange } from "./cvData";
 import { calculateScrollProgress } from "./cvNavigation";
@@ -168,7 +169,7 @@ export function CVPage() {
             <div className="cv-content">
               <h3>{item.position}</h3>
               <strong>{item.company}</strong>
-              {item.description && <p>{item.description}</p>}
+              {item.description && <MarkdownContent>{item.description}</MarkdownContent>}
               {item.techStack && <code>{item.techStack}</code>}
             </div>
           </div>
@@ -188,7 +189,7 @@ export function CVPage() {
               <h3>{item.degree}</h3>
               <strong>{item.institution}</strong>
               {item.thesis && <p><b>{t("portfolio.cv.thesis")}:</b> {item.thesis}</p>}
-              {item.description && <p>{item.description}</p>}
+              {item.description && <MarkdownContent>{item.description}</MarkdownContent>}
             </div>
           </div>
         )) : <Empty />}
