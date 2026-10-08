@@ -17,6 +17,7 @@ describe("AlbumsPage", () => {
 
     expect(await screen.findByRole("link", { name: /Alps/i })).toHaveAttribute("href", "/albums/alps");
     expect(container.querySelector(".album-grid-3")).toBeInTheDocument();
+    expect(screen.getByText("01 / 03")).toBeInTheDocument();
     expect(screen.getAllByRole("link")).toHaveLength(3);
   });
 });

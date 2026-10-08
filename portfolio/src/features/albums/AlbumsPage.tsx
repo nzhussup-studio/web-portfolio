@@ -29,12 +29,15 @@ export function AlbumsPage() {
               <Link className="album-preview" to={`/albums/${encodeURIComponent(album.id ?? "")}`} key={albumKey(album, index)}>
                 <div className="album-cover">
                   {image ? <img src={image} alt="" /> : <ImageIcon aria-hidden="true" />}
+                  <div className="album-card-copy">
+                    <span className="album-index">{String(index + 1).padStart(2, "0")} / {String(ordered.length).padStart(2, "0")}</span>
+                    <h2>{album.title}</h2>
+                    <span className="album-card-details">
+                      {album.date && <time>{album.date}</time>}
+                      <span>{t("portfolio.albums.photoCount", { count: album.image_count ?? 0 })}</span>
+                    </span>
+                  </div>
                 </div>
-                <span className="album-index">{String(index + 1).padStart(2, "0")} / {String(ordered.length).padStart(2, "0")}</span>
-                <h2>{album.title}</h2>
-                {album.date && <time>{album.date}</time>}
-                {album.desc && <p>{album.desc}</p>}
-                <span>{t("portfolio.albums.photoCount", { count: album.image_count ?? 0 })}</span>
               </Link>
             );
           })}
