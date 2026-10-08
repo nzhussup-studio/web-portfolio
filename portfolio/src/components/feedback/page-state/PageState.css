@@ -1,0 +1,6 @@
+.page-state { min-height: 55vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.page-state h1 { margin: 0; font-size: clamp(3rem, 7vw, 6.5rem); letter-spacing: -.06em; }
+.page-state > p:not(.code-label) { max-width: 38rem; color: var(--muted); font-size: 1.1rem; line-height: 1.65; }
+.page-state-actions { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.page-state-actions svg { width: 1rem; height: 1rem; }
+@media (max-width: 420px) { .page-state-actions { align-items: stretch; flex-direction: column; } .page-state-actions .ui-button { width: 100%; } }

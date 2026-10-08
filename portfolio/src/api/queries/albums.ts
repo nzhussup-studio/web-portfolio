@@ -1,5 +1,4 @@
-import { apiClient } from "../client";
-import { ApiError } from "../errors";
+import { apiClient, ApiError } from "@/api";
 
 export async function getAlbumPreviews() {
   const { data, error, response } = await apiClient.GET("/v1/album", {

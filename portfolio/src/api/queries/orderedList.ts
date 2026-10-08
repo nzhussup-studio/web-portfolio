@@ -1,5 +1,4 @@
-import { API_BASE_URL } from "../client";
-import { ApiError } from "../errors";
+import { API_BASE_URL, ApiError } from "@/api";
 
 type OrderedRecord = { displayOrder?: number };
 

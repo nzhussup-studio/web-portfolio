@@ -1,5 +1,4 @@
-import { API_BASE_URL, resolveApiAsset } from "../../api/client";
-import type { AlbumImage, AlbumPreview } from "../../api/types";
+import { API_BASE_URL, resolveApiAsset, type AlbumImage, type AlbumPreview } from "@/api";
 
 export function sortAlbums(albums: AlbumPreview[]): AlbumPreview[] {
   return [...albums].sort((left, right) => {

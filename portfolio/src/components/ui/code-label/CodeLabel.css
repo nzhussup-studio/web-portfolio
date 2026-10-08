@@ -1,0 +1,2 @@
+.code-label { margin: 0 0 1.3rem; color: var(--muted); font: 500 .84rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .02em; }
+.code-label-accent { color: var(--accent); }

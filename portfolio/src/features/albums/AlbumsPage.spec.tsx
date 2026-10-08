@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { getAlbumPreviews } from "../../api/queries/albums";
-import { renderWithApp } from "../../test/render";
+import { getAlbumPreviews } from "@/api/queries";
+import { renderWithApp } from "@/test/render";
 import { AlbumsPage } from "./AlbumsPage";
 
 vi.mock("../../api/queries/albums", () => ({ getAlbumPreviews: vi.fn() }));

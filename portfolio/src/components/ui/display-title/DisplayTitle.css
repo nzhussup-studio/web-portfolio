@@ -1,0 +1,5 @@
+.display-title { margin: 0; line-height: .9; letter-spacing: -.075em; font-weight: 750; }
+.display-title span { color: var(--accent); }
+.display-title-page { font-size: clamp(4rem, 7.5vw, 7.5rem); }
+.display-title-hero { font-size: clamp(4rem, 8vw, 8rem); }
+@media (max-width: 760px) { .display-title-page { font-size: clamp(3.2rem, 15vw, 4.75rem); overflow-wrap: anywhere; } .display-title-hero { font-size: clamp(3.25rem, 16vw, 5rem); } }

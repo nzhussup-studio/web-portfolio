@@ -1,4 +1,4 @@
-import { apiClient } from "../../api/client";
+import { apiClient } from "@/api";
 
 export async function fetchSummary(language: "en" | "kk", signal?: AbortSignal) {
   const { data, error } = await apiClient.GET("/v1/llm/summarize", {

@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { queryKeys } from "../../api/queryKeys";
-import { getProjects } from "../../api/queries/projects";
-import { PageState } from "../../components/feedback/PageState";
-import { PageIntro } from "../../components/layout/PageIntro";
-import { ExternalLink as ExternalAnchor } from "../../components/ui/ExternalLink";
+import { queryKeys } from "@/api";
+import { getProjects } from "@/api/queries";
+import { PageState } from "@/components/feedback/page-state";
+import { InlineState } from "@/components/feedback/inline-state";
+import { PageIntro } from "@/components/layout/page-intro";
+import { ExternalLink as ExternalAnchor } from "@/components/ui/external-link";
 import { formatProjectIndex, projectKey } from "./projectData";
+import "./ProjectsPage.css";
 
 export function ProjectsPage() {
   const { t } = useTranslation();
@@ -37,7 +39,7 @@ export function ProjectsPage() {
               </ExternalAnchor>
             )}
           </article>
-        )) : <p className="inline-state">{t("portfolio.common.empty")}</p>}
+        )) : <InlineState>{t("portfolio.common.empty")}</InlineState>}
       </section>
     </article>
   );

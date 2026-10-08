@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { apiClient } from "../../api/client";
+import { apiClient } from "@/api";
 import { fetchSummary } from "./aboutApi";
 
 vi.mock("../../api/client", () => ({ apiClient: { GET: vi.fn() } }));

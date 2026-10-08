@@ -1,0 +1,26 @@
+.album-grid { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: dense; grid-auto-rows: clamp(3rem, 4vw, 4.25rem); gap: clamp(.65rem, 1.2vw, 1rem); }
+.album-preview { min-width: 0; min-height: 0; display: flex; flex-direction: column; text-decoration: none; }
+.album-cover { position: relative; width: 100%; height: 100%; min-height: 13rem; background: color-mix(in srgb, var(--surface) 82%, var(--background)); display: grid; place-items: center; overflow: hidden; border: 1px solid var(--image-line); border-radius: 0; transition: transform .55s cubic-bezier(.16, 1, .3, 1); }
+.album-cover::before { content: ""; position: absolute; z-index: 1; inset: 48% 0 0; background: linear-gradient(180deg, transparent, rgb(5 7 6 / 58%)); pointer-events: none; }
+.album-cover img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transition: transform .45s ease; }
+.album-preview:hover .album-cover img { transform: scale(1.015); }
+.album-preview:hover .album-cover, .album-preview:focus-visible .album-cover { transform: translateY(-3px); }
+.album-cover > svg { width: 2rem; height: 2rem; color: var(--muted); }
+.album-card-copy { position: absolute; z-index: 2; right: clamp(.85rem, 1.5vw, 1.25rem); bottom: clamp(.85rem, 1.5vw, 1.25rem); left: clamp(.85rem, 1.5vw, 1.25rem); display: grid; justify-items: start; gap: .38rem; max-width: min(22rem, calc(100% - 2rem)); color: #fffaf1; }
+.album-preview h2 { margin: 0; max-width: 18ch; color: inherit; font: 750 clamp(1.25rem, 2vw, 2rem)/1 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: -.055em; text-wrap: balance; transition: transform .4s cubic-bezier(.16, 1, .3, 1); }
+.album-preview:hover h2, .album-preview:focus-visible h2 { transform: translateX(.2rem); }
+.album-index, .album-card-details { font: 500 .6rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: .02em; }
+.album-card-details { min-width: 0; display: flex; flex-wrap: wrap; gap: .25rem .9rem; }
+@media (min-width: 900px) {
+  .album-grid-1 .album-preview { grid-column: span 8; grid-row: span 6; }
+  .album-grid-2 .album-preview { grid-column: span 6; grid-row: span 5; }
+  .album-grid-3 .album-preview:nth-child(1) { grid-column: span 6; grid-row: span 6; }
+  .album-grid-3 .album-preview:nth-child(2), .album-grid-3 .album-preview:nth-child(3) { grid-column: span 6; grid-row: span 3; }
+  .album-grid-4 .album-preview:nth-child(1), .album-grid-many .album-preview:nth-child(4n + 1) { grid-column: span 7; grid-row: span 5; }
+  .album-grid-4 .album-preview:nth-child(2), .album-grid-many .album-preview:nth-child(4n + 2) { grid-column: span 5; grid-row: span 4; }
+  .album-grid-4 .album-preview:nth-child(3), .album-grid-many .album-preview:nth-child(4n + 3) { grid-column: span 7; grid-row: span 4; }
+  .album-grid-4 .album-preview:nth-child(4), .album-grid-many .album-preview:nth-child(4n + 4) { grid-column: span 5; grid-row: span 5; }
+}
+@media (min-width: 761px) and (max-width: 899px) { .album-grid .album-preview { grid-column: span 6; grid-row: span 4; } .album-grid-1 .album-preview { grid-column: span 12; grid-row: span 5; } .album-grid-many .album-preview:nth-child(5n + 1) { grid-column: span 7; grid-row: span 5; } .album-grid-many .album-preview:nth-child(5n + 2) { grid-column: span 5; grid-row: span 5; } }
+@media (max-width: 760px) { .album-grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 1rem; } .album-grid .album-preview { grid-column: 1; grid-row: auto; padding-top: 0; } .album-preview .album-cover { aspect-ratio: 16 / 10; } .album-preview h2 { font-size: 1.4rem; } }
+@media (hover: none) { .album-preview:hover h2, .album-preview:hover .album-cover img, .album-preview:hover .album-cover { transform: none; } }

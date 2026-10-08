@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { renderWithApp } from "../test/render";
+import { renderWithApp } from "@/test/render";
 import { shouldTransitionPage } from "./routeTransition";
 import { AppRouter } from "./router";
 

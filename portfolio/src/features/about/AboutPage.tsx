@@ -2,14 +2,17 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Layers3, MapPin, Pause, Play, RefreshCw, Sparkles, SquareTerminal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { Language } from "../../app/preferences";
-import { queryKeys } from "../../api/queryKeys";
-import { Button } from "../../components/ui/Button";
-import { CodeLabel } from "../../components/ui/CodeLabel";
+import type { Language } from "@/app/preferences";
+import { queryKeys } from "@/api";
+import { Button } from "@/components/ui/button";
+import { CodeLabel } from "@/components/ui/code-label";
+import { DisplayTitle } from "@/components/ui/display-title";
+import { Spinner } from "@/components/ui/spinner";
 import profilePhoto from "./assets/nurik.jpeg";
 import mountainsPhoto from "./assets/mountains.jpeg";
 import forestPhoto from "./assets/forest.jpeg";
 import { fetchSummary } from "./aboutApi";
+import "./AboutPage.css";
 
 type AboutPageProps = {
   language: Language;
@@ -63,11 +66,8 @@ export function AboutPage({ language }: AboutPageProps) {
     <article className="about-page site-container">
       <section className={`about-hero${requested ? " has-summary" : ""}`} aria-labelledby="about-title">
         <div className="about-copy">
-          <CodeLabel>hello.world / 01</CodeLabel>
-          <h1 id="about-title">
-            {t("portfolio.about.title")}
-            <span aria-hidden="true">.</span>
-          </h1>
+          <CodeLabel tone="accent">hello.world / 01</CodeLabel>
+          <DisplayTitle id="about-title" size="hero">{t("portfolio.about.title")}</DisplayTitle>
           <p className="hero-subtitle">{t("portfolio.about.subtitle")}</p>
           <div className="intro-copy">
             <p>{t("portfolio.about.intro1")}</p>
@@ -81,7 +81,7 @@ export function AboutPage({ language }: AboutPageProps) {
               </Button>
             ) : isGenerating ? (
               <Button size="large" disabled aria-busy="true">
-                <RefreshCw className="summary-spinner" aria-hidden="true" />
+                <Spinner />
                 {t("portfolio.about.generating")}
               </Button>
             ) : isRevealing ? (
@@ -116,7 +116,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       {requested && (
         <section className="summary-output" aria-live="polite" aria-busy={summary.isFetching}>
-          <CodeLabel>ai.summary / live</CodeLabel>
+          <CodeLabel tone="accent">ai.summary / live</CodeLabel>
           {summary.isPending && <p>{t("portfolio.about.loading")}</p>}
           {summary.isError && <p className="error-text">{t("portfolio.about.error")}</p>}
           {summary.data && <p>{summary.data.slice(0, visibleCharacters)}</p>}
@@ -125,7 +125,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       <section className="profile-index" aria-labelledby="profile-index-title">
         <header>
-          <CodeLabel>{"// profile"}</CodeLabel>
+          <CodeLabel tone="accent">{"// profile"}</CodeLabel>
           <h2 id="profile-index-title">{t("portfolio.about.factsTitle")}</h2>
         </header>
         <dl>
@@ -146,7 +146,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       <section className="story-grid" aria-labelledby="story-title">
         <header>
-          <CodeLabel>{"// the route here"}</CodeLabel>
+          <CodeLabel tone="accent">{"// the route here"}</CodeLabel>
           <h2 id="story-title">{t("portfolio.about.story.title")}</h2>
           <div className="story-route" aria-hidden="true">
             <span>01</span><i /><span>02</span>
@@ -166,7 +166,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       <section className="beyond-grid">
         <div>
-          <CodeLabel>{"// beyond"}</CodeLabel>
+          <CodeLabel tone="accent">{"// beyond"}</CodeLabel>
           <h2>{t("portfolio.about.beyond.title")}</h2>
         </div>
         <div className="beyond-content">
@@ -189,7 +189,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       <aside className="nerd-note" aria-label={t("portfolio.about.curious.title")}>
         <div>
-          <CodeLabel>{"// for the curious"}</CodeLabel>
+          <CodeLabel tone="accent">{"// for the curious"}</CodeLabel>
           <h2>{t("portfolio.about.curious.title")}</h2>
         </div>
         <p>

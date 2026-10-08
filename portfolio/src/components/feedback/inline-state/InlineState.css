@@ -1,0 +1,4 @@
+.inline-state { color: var(--muted); padding: 2rem 0; border-top: 1px solid var(--line); }
+.inline-state-error { color: var(--error); }
+.inline-state-action { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+@media (max-width: 420px) { .inline-state-action { align-items: stretch; flex-direction: column; } }

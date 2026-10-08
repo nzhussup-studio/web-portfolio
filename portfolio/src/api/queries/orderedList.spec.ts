@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { API_BASE_URL } from "../client";
+import { API_BASE_URL } from "@/api";
 import { getOrderedList } from "./orderedList";
 
 afterEach(() => {

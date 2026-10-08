@@ -1,0 +1,4 @@
+.back-link { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; color: var(--muted); text-decoration: none; margin-bottom: 3rem; }
+.back-link:hover { color: var(--accent); }
+.back-link svg { width: 1rem; height: 1rem; }
+@media (max-width: 760px) { .back-link { margin-bottom: 2rem; } }

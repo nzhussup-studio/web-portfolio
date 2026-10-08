@@ -12,8 +12,8 @@ import notoSansRegular from "@fontsource/noto-sans/files/noto-sans-cyrillic-400-
 import notoSansBold from "@fontsource/noto-sans/files/noto-sans-cyrillic-700-normal.woff?url";
 import notoSansMonoRegular from "@fontsource/noto-sans-mono/files/noto-sans-mono-cyrillic-400-normal.woff?url";
 import notoSansMonoBold from "@fontsource/noto-sans-mono/files/noto-sans-mono-cyrillic-700-normal.woff?url";
-import { profile } from "../../app/profile";
-import type { Certificate, Education, Skill, WorkExperience } from "../../api/types";
+import { profile } from "@/app/profile";
+import type { Certificate, Education, Skill, WorkExperience } from "@/api";
 import { formatRange } from "./cvData";
 import { parsePdfDescription, pdfBulletForLevel } from "./cvPdfMarkdown";
 

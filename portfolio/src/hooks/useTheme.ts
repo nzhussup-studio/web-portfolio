@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { resolveTheme, type Theme } from "../app/preferences";
+import { resolveTheme, type Theme } from "@/app/preferences";
 
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "light";

@@ -1,15 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, ImageIcon } from "lucide-react";
+import { ImageIcon } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Lightbox from "yet-another-react-lightbox";
-import { isNotFoundError } from "../../api/errors";
-import { queryKeys } from "../../api/queryKeys";
-import { getAlbum } from "../../api/queries/albums";
-import { PageState } from "../../components/feedback/PageState";
-import { CodeLabel } from "../../components/ui/CodeLabel";
+import { isNotFoundError, queryKeys } from "@/api";
+import { getAlbum } from "@/api/queries";
+import { PageState } from "@/components/feedback/page-state";
+import { BackLink } from "@/components/ui/back-link";
+import { CodeLabel } from "@/components/ui/code-label";
+import { DisplayTitle } from "@/components/ui/display-title";
 import { albumImageSource } from "./albumData";
+import "./AlbumDetailPage.css";
 
 export function AlbumDetailPage() {
   const { t } = useTranslation();
@@ -38,10 +40,10 @@ export function AlbumDetailPage() {
   const images = (album.data.images ?? []).map((image) => ({ image, src: albumImageSource(albumID, image) })).filter((item): item is typeof item & { src: string } => Boolean(item.src));
   return (
     <article className="content-page site-container album-detail">
-      <Link className="back-link" to="/albums"><ArrowLeft aria-hidden="true" />{t("portfolio.albums.back")}</Link>
+      <BackLink to="/albums">{t("portfolio.albums.back")}</BackLink>
       <header>
-        <CodeLabel>photo_archive / {albumID}</CodeLabel>
-        <h1>{album.data.title}<span aria-hidden="true">.</span></h1>
+        <CodeLabel tone="accent">photo_archive / {albumID}</CodeLabel>
+        <DisplayTitle>{album.data.title}</DisplayTitle>
         <div className="album-detail-meta">
           {album.data.date && <time>{album.data.date}</time>}
           <span>{t("portfolio.albums.photoCount", { count: images.length })}</span>

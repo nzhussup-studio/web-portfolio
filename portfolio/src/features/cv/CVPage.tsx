@@ -2,21 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import { ExternalLink, FileDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  getCertificates,
-  getEducation,
-  getSkills,
-  getWorkExperience,
-} from "../../api/queries/cv";
-import { queryKeys } from "../../api/queryKeys";
-import { PageState } from "../../components/feedback/PageState";
-import { MarkdownContent } from "../../components/data-display/MarkdownContent";
-import { PageIntro } from "../../components/layout/PageIntro";
-import { Button } from "../../components/ui/Button";
-import { CodeLabel } from "../../components/ui/CodeLabel";
-import { ExternalLink as ExternalAnchor } from "../../components/ui/ExternalLink";
+import { queryKeys } from "@/api";
+import { getCertificates, getEducation, getSkills, getWorkExperience } from "@/api/queries";
+import { PageState } from "@/components/feedback/page-state";
+import { InlineState } from "@/components/feedback/inline-state";
+import { MarkdownContent } from "@/components/data-display/markdown-content";
+import { PageIntro } from "@/components/layout/page-intro";
+import { Button } from "@/components/ui/button";
+import { ExternalLink as ExternalAnchor } from "@/components/ui/external-link";
+import { ProgressBar } from "@/components/ui/progress-bar";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { formatRange } from "./cvData";
 import { calculateScrollProgress } from "./cvNavigation";
+import "./CVPage.css";
 
 const sections = ["experience", "education", "skills", "certificates"] as const;
 
@@ -147,21 +145,16 @@ export function CVPage() {
             {t(`portfolio.cv.${section}`)}
           </a>
         ))}
-        <span
-          ref={progressRef}
+        <ProgressBar
+          rootRef={progressRef}
+          fillRef={progressFillRef}
           className="cv-progress"
-          role="progressbar"
-          aria-label={t("portfolio.cv.progress")}
-          aria-valuemin={0}
-          aria-valuemax={100}
-        >
-          <i ref={progressFillRef} />
-        </span>
+          label={t("portfolio.cv.progress")}
+        />
       </nav>
 
       <section id="experience" className="linear-section">
-        <CodeLabel>{"// experience"}</CodeLabel>
-        <h2>{t("portfolio.cv.experience")}</h2>
+        <SectionHeading label="// experience" title={t("portfolio.cv.experience")} />
         {work.isError ? <InlineError onRetry={() => void work.refetch()} /> : work.data?.length ? work.data.map((item) => (
           <div className="cv-row" key={item.id ?? `${item.company}-${item.startDate}`}>
             <div className="cv-meta">
@@ -179,8 +172,7 @@ export function CVPage() {
       </section>
 
       <section id="education" className="linear-section">
-        <CodeLabel>{"// education"}</CodeLabel>
-        <h2>{t("portfolio.cv.education")}</h2>
+        <SectionHeading label="// education" title={t("portfolio.cv.education")} />
         {education.isError ? <InlineError onRetry={() => void education.refetch()} /> : education.data?.length ? education.data.map((item) => (
           <div className="cv-row" key={item.id ?? `${item.institution}-${item.startDate}`}>
             <div className="cv-meta">
@@ -198,8 +190,7 @@ export function CVPage() {
       </section>
 
       <section id="skills" className="linear-section">
-        <CodeLabel>{"// skills"}</CodeLabel>
-        <h2>{t("portfolio.cv.skills")}</h2>
+        <SectionHeading label="// skills" title={t("portfolio.cv.skills")} />
         {skills.isError ? <InlineError onRetry={() => void skills.refetch()} /> : skills.data?.length ? skills.data.map((item) => (
           <div className="skill-row" key={item.id ?? item.category}>
             <h3>{item.category}</h3><code>{item.skillNames}</code>
@@ -208,8 +199,7 @@ export function CVPage() {
       </section>
 
       <section id="certificates" className="linear-section">
-        <CodeLabel>{"// certificates"}</CodeLabel>
-        <h2>{t("portfolio.cv.certificates")}</h2>
+        <SectionHeading label="// certificates" title={t("portfolio.cv.certificates")} />
         {certificates.isError ? <InlineError onRetry={() => void certificates.refetch()} /> : certificates.data?.length ? certificates.data.map((item) => (
           <div className="certificate-row" key={item.id ?? item.name}>
             <h3>{item.name}</h3><span>{item.issuer}</span>
@@ -223,10 +213,10 @@ export function CVPage() {
 
 function Empty() {
   const { t } = useTranslation();
-  return <p className="inline-state">{t("portfolio.common.empty")}</p>;
+  return <InlineState>{t("portfolio.common.empty")}</InlineState>;
 }
 
 function InlineError({ onRetry }: { onRetry: () => void }) {
   const { t } = useTranslation();
-  return <div className="inline-state inline-state-action error-text"><span>{t("portfolio.common.sectionError")}</span><Button onClick={onRetry}>{t("portfolio.common.retry")}</Button></div>;
+  return <InlineState tone="error" action={{ label: t("portfolio.common.retry"), onClick: onRetry }}>{t("portfolio.common.sectionError")}</InlineState>;
 }

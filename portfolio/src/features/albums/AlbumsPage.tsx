@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { ImageIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { resolveApiAsset } from "../../api/client";
-import { queryKeys } from "../../api/queryKeys";
-import { getAlbumPreviews } from "../../api/queries/albums";
-import { PageState } from "../../components/feedback/PageState";
-import { PageIntro } from "../../components/layout/PageIntro";
+import { queryKeys, resolveApiAsset } from "@/api";
+import { getAlbumPreviews } from "@/api/queries";
+import { PageState } from "@/components/feedback/page-state";
+import { InlineState } from "@/components/feedback/inline-state";
+import { PageIntro } from "@/components/layout/page-intro";
 import { albumKey, sortAlbums } from "./albumData";
+import "./AlbumsPage.css";
 
 export function AlbumsPage() {
   const { t } = useTranslation();
@@ -42,7 +43,7 @@ export function AlbumsPage() {
             );
           })}
         </section>
-      ) : <p className="inline-state">{t("portfolio.common.empty")}</p>}
+      ) : <InlineState>{t("portfolio.common.empty")}</InlineState>}
     </article>
   );
 }

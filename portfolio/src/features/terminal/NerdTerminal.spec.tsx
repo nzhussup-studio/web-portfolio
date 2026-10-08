@@ -1,9 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { getAlbumPreviews } from "../../api/queries/albums";
-import { getCertificates, getEducation, getSkills, getWorkExperience } from "../../api/queries/cv";
-import { getProjects } from "../../api/queries/projects";
-import { renderWithApp } from "../../test/render";
+import { getAlbumPreviews, getCertificates, getEducation, getProjects, getSkills, getWorkExperience } from "@/api/queries";
+import { renderWithApp } from "@/test/render";
 import { NerdTerminal } from "./NerdTerminal";
 
 vi.mock("../../api/queries/albums", () => ({ getAlbumPreviews: vi.fn() }));

@@ -2,12 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { LogOut } from "lucide-react";
 import { useEffect, useRef, useState, type AnimationEvent, type KeyboardEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { getAlbumPreviews } from "../../api/queries/albums";
-import { getCertificates, getEducation, getSkills, getWorkExperience } from "../../api/queries/cv";
-import { getProjects } from "../../api/queries/projects";
-import { queryKeys } from "../../api/queryKeys";
-import { profile } from "../../app/profile";
+import { queryKeys } from "@/api";
+import { getAlbumPreviews, getCertificates, getEducation, getProjects, getSkills, getWorkExperience } from "@/api/queries";
+import { profile } from "@/app/profile";
 import { completeTerminalInput, executeTerminalCommand, type TerminalData } from "./terminalEngine";
+import "./NerdTerminal.css";
 
 type TerminalLine = { id: number; kind: "system" | "prompt" | "output" | "error"; text: string };
 

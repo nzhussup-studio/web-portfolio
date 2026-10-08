@@ -1,4 +1,4 @@
-import type { Certificate, Education, Skill, WorkExperience } from "../types";
+import type { Certificate, Education, Skill, WorkExperience } from "@/api";
 import { getOrderedList } from "./orderedList";
 
 // These casts stay at the API boundary until the OpenAPI list responses use their schemas.

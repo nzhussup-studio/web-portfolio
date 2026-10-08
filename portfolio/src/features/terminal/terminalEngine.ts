@@ -1,4 +1,4 @@
-import type { AlbumPreview, Certificate, Education, Project, Skill, WorkExperience } from "../../api/types";
+import type { AlbumPreview, Certificate, Education, Project, Skill, WorkExperience } from "@/api";
 
 export const TERMINAL_COMMANDS = ["help", "ls", "cd", "cat", "open", "pwd", "tree", "neofetch", "whoami", "history", "clear", "exit", "date", "echo"] as const;
 

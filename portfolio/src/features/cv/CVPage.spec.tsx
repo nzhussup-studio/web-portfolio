@@ -1,7 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { getCertificates, getEducation, getSkills, getWorkExperience } from "../../api/queries/cv";
-import { renderWithApp } from "../../test/render";
+import { getCertificates, getEducation, getSkills, getWorkExperience } from "@/api/queries";
+import { renderWithApp } from "@/test/render";
 import { CVPage } from "./CVPage";
 import { downloadCvPdf } from "./cvPdf";
 

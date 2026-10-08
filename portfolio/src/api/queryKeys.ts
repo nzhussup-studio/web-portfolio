@@ -1,4 +1,4 @@
-import type { Language } from "../app/preferences";
+import type { Language } from "@/app/preferences";
 
 export const queryKeys = {
   about: {

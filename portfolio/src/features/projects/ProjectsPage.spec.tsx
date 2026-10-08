@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { getProjects } from "../../api/queries/projects";
-import { renderWithApp } from "../../test/render";
+import { getProjects } from "@/api/queries";
+import { renderWithApp } from "@/test/render";
 import { ProjectsPage } from "./ProjectsPage";
 
 vi.mock("../../api/queries/projects", () => ({ getProjects: vi.fn() }));

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { resolveLanguage, type Language } from "../app/preferences";
+import { resolveLanguage, type Language } from "@/app/preferences";
 
 export function useLanguage() {
   const { i18n } = useTranslation();

@@ -5,6 +5,48 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
+const architecturePlugin = {
+  rules: {
+    'enforce-import-boundaries': {
+      meta: {
+        type: 'problem',
+        schema: [],
+        messages: {
+          parentRelative: 'Import across a folder boundary through "{{source}}" is not allowed. Use an @/ entry point instead.',
+          privateComponent: 'Import components through their folder entry point, not "{{source}}".',
+          privateApi: 'Import API code through @/api or @/api/queries, not "{{source}}".',
+        },
+      },
+      create(context) {
+        const checkSource = (node) => {
+          const source = node.source?.value
+          if (typeof source !== 'string') return
+
+          if (source === '..' || source.startsWith('../')) {
+            context.report({ node: node.source, messageId: 'parentRelative', data: { source } })
+            return
+          }
+
+          if (source.startsWith('@/components/') && source.split('/').length > 4) {
+            context.report({ node: node.source, messageId: 'privateComponent', data: { source } })
+          }
+
+          if (source.startsWith('@/api/') && source !== '@/api/queries') {
+            context.report({ node: node.source, messageId: 'privateApi', data: { source } })
+          }
+        }
+
+        return {
+          ImportDeclaration: checkSource,
+          ExportAllDeclaration: checkSource,
+          ExportNamedDeclaration: checkSource,
+          ImportExpression: checkSource,
+        }
+      },
+    },
+  },
+}
+
 export default [
   {
     ignores: ['dist', 'src/api/generated'],
@@ -22,6 +64,7 @@ export default [
     },
     settings: { react: { version: '18.3' } },
     plugins: {
+      architecture: architecturePlugin,
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
@@ -49,11 +92,13 @@ export default [
     },
     settings: { react: { version: '18.3' } },
     plugins: {
+      architecture: architecturePlugin,
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
     rules: {
+      'architecture/enforce-import-boundaries': 'error',
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,

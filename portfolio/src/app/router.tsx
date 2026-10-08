@@ -1,12 +1,12 @@
 import { useEffect, useState, type AnimationEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { PageState } from "../components/feedback/PageState";
-import { AboutPage } from "../features/about/AboutPage";
-import { AlbumDetailPage } from "../features/albums/AlbumDetailPage";
-import { AlbumsPage } from "../features/albums/AlbumsPage";
-import { CVPage } from "../features/cv/CVPage";
-import { ProjectsPage } from "../features/projects/ProjectsPage";
+import { PageState } from "@/components/feedback/page-state";
+import { AboutPage } from "@/features/about/AboutPage";
+import { AlbumDetailPage } from "@/features/albums/AlbumDetailPage";
+import { AlbumsPage } from "@/features/albums/AlbumsPage";
+import { CVPage } from "@/features/cv/CVPage";
+import { ProjectsPage } from "@/features/projects/ProjectsPage";
 import type { Language } from "./preferences";
 import { shouldTransitionPage } from "./routeTransition";
 
