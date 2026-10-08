@@ -1,5 +1,6 @@
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Button, ButtonLink } from "../ui/Button";
+import { CodeLabel } from "../ui/CodeLabel";
 
 type PageStateProps = {
   eyebrow: string;
@@ -12,13 +13,13 @@ type PageStateProps = {
 export function PageState({ eyebrow, title, message, action, link }: PageStateProps) {
   return (
     <section className="page-state site-container">
-      <p className="code-label">{eyebrow}</p>
+      <CodeLabel>{eyebrow}</CodeLabel>
       <h1>{title}</h1>
       {message && <p>{message}</p>}
       {(action || link) && (
         <div className="page-state-actions">
-          {link && <Link to={link.to}><ArrowLeft aria-hidden="true" />{link.label}</Link>}
-          {action && <button type="button" onClick={action.onClick}>{action.label}</button>}
+          {link && <ButtonLink to={link.to}><ArrowLeft aria-hidden="true" />{link.label}</ButtonLink>}
+          {action && <Button onClick={action.onClick}>{action.label}</Button>}
         </div>
       )}
     </section>

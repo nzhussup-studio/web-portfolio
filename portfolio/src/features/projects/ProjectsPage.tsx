@@ -5,6 +5,7 @@ import { queryKeys } from "../../api/queryKeys";
 import { getProjects } from "../../api/queries/projects";
 import { PageState } from "../../components/feedback/PageState";
 import { PageIntro } from "../../components/layout/PageIntro";
+import { ExternalLink as ExternalAnchor } from "../../components/ui/ExternalLink";
 import { formatProjectIndex, projectKey } from "./projectData";
 
 export function ProjectsPage() {
@@ -31,9 +32,9 @@ export function ProjectsPage() {
               {project.techStack && <code>{project.techStack}</code>}
             </div>
             {project.url && (
-              <a href={project.url} target="_blank" rel="noreferrer">
+              <ExternalAnchor href={project.url}>
                 {t("portfolio.projects.source")}<ExternalLink aria-hidden="true" />
-              </a>
+              </ExternalAnchor>
             )}
           </article>
         )) : <p className="inline-state">{t("portfolio.common.empty")}</p>}

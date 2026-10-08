@@ -8,6 +8,7 @@ import { isNotFoundError } from "../../api/errors";
 import { queryKeys } from "../../api/queryKeys";
 import { getAlbum } from "../../api/queries/albums";
 import { PageState } from "../../components/feedback/PageState";
+import { CodeLabel } from "../../components/ui/CodeLabel";
 import { albumImageSource } from "./albumData";
 
 export function AlbumDetailPage() {
@@ -39,7 +40,7 @@ export function AlbumDetailPage() {
     <article className="content-page site-container album-detail">
       <Link className="back-link" to="/albums"><ArrowLeft aria-hidden="true" />{t("portfolio.albums.back")}</Link>
       <header>
-        <p className="code-label">photo_archive / {albumID}</p>
+        <CodeLabel>photo_archive / {albumID}</CodeLabel>
         <h1>{album.data.title}<span aria-hidden="true">.</span></h1>
         <div className="album-detail-meta">
           {album.data.date && <time>{album.data.date}</time>}

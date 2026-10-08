@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { Language } from "../../app/preferences";
 import { queryKeys } from "../../api/queryKeys";
+import { Button } from "../../components/ui/Button";
+import { CodeLabel } from "../../components/ui/CodeLabel";
 import profilePhoto from "./assets/nurik.jpeg";
 import mountainsPhoto from "./assets/mountains.jpeg";
 import forestPhoto from "./assets/forest.jpeg";
@@ -61,7 +63,7 @@ export function AboutPage({ language }: AboutPageProps) {
     <article className="about-page site-container">
       <section className={`about-hero${requested ? " has-summary" : ""}`} aria-labelledby="about-title">
         <div className="about-copy">
-          <p className="code-label">hello.world / 01</p>
+          <CodeLabel>hello.world / 01</CodeLabel>
           <h1 id="about-title">
             {t("portfolio.about.title")}
             <span aria-hidden="true">.</span>
@@ -73,24 +75,23 @@ export function AboutPage({ language }: AboutPageProps) {
           </div>
           <div className="summary-action">
             {!requested ? (
-              <button className="summary-button" type="button" onClick={() => setRequestedLanguage(language)}>
+              <Button size="large" onClick={() => setRequestedLanguage(language)}>
                 <Sparkles aria-hidden="true" />
                 {t("portfolio.about.generate")}
-              </button>
+              </Button>
             ) : isGenerating ? (
-              <button className="summary-button" type="button" disabled aria-busy="true">
+              <Button size="large" disabled aria-busy="true">
                 <RefreshCw className="summary-spinner" aria-hidden="true" />
                 {t("portfolio.about.generating")}
-              </button>
+              </Button>
             ) : isRevealing ? (
-              <button className="summary-button" type="button" onClick={() => setPaused((value) => !value)}>
+              <Button size="large" onClick={() => setPaused((value) => !value)}>
                 {paused ? <Play aria-hidden="true" /> : <Pause aria-hidden="true" />}
                 {paused ? t("portfolio.about.resume") : t("portfolio.about.pause")}
-              </button>
+              </Button>
             ) : (
-              <button
-                className="summary-button"
-                type="button"
+              <Button
+                size="large"
                 onClick={() => {
                   setVisibleCharacters(0);
                   setPaused(false);
@@ -99,7 +100,7 @@ export function AboutPage({ language }: AboutPageProps) {
               >
                 <Sparkles aria-hidden="true" />
                 {t("portfolio.about.regenerate")}
-              </button>
+              </Button>
             )}
             <span className="ready-label">{t("portfolio.about.ready")}</span>
           </div>
@@ -115,7 +116,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       {requested && (
         <section className="summary-output" aria-live="polite" aria-busy={summary.isFetching}>
-          <p className="code-label">ai.summary / live</p>
+          <CodeLabel>ai.summary / live</CodeLabel>
           {summary.isPending && <p>{t("portfolio.about.loading")}</p>}
           {summary.isError && <p className="error-text">{t("portfolio.about.error")}</p>}
           {summary.data && <p>{summary.data.slice(0, visibleCharacters)}</p>}
@@ -124,7 +125,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       <section className="profile-index" aria-labelledby="profile-index-title">
         <header>
-          <p className="code-label">{"// profile"}</p>
+          <CodeLabel>{"// profile"}</CodeLabel>
           <h2 id="profile-index-title">{t("portfolio.about.factsTitle")}</h2>
         </header>
         <dl>
@@ -145,7 +146,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       <section className="story-grid" aria-labelledby="story-title">
         <header>
-          <p className="code-label">{"// the route here"}</p>
+          <CodeLabel>{"// the route here"}</CodeLabel>
           <h2 id="story-title">{t("portfolio.about.story.title")}</h2>
           <div className="story-route" aria-hidden="true">
             <span>01</span><i /><span>02</span>
@@ -165,7 +166,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       <section className="beyond-grid">
         <div>
-          <p className="code-label">{"// beyond"}</p>
+          <CodeLabel>{"// beyond"}</CodeLabel>
           <h2>{t("portfolio.about.beyond.title")}</h2>
         </div>
         <div className="beyond-content">
@@ -188,7 +189,7 @@ export function AboutPage({ language }: AboutPageProps) {
 
       <aside className="nerd-note" aria-label={t("portfolio.about.curious.title")}>
         <div>
-          <p className="code-label">{"// for the curious"}</p>
+          <CodeLabel>{"// for the curious"}</CodeLabel>
           <h2>{t("portfolio.about.curious.title")}</h2>
         </div>
         <p>

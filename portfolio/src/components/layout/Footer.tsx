@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { profile } from "../../app/profile";
+import { ExternalLink as ExternalAnchor } from "../ui/ExternalLink";
 
 const links = [
   { label: "Email", href: `mailto:${profile.email}` },
@@ -21,10 +22,10 @@ export function Footer() {
         </div>
         <nav className="footer-links" aria-label="External links">
           {links.map((link) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+            <ExternalAnchor key={link.label} href={link.href}>
               {link.label}
               <ExternalLink aria-hidden="true" />
-            </a>
+            </ExternalAnchor>
           ))}
         </nav>
       </div>

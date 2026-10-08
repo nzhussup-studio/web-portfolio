@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CodeLabel } from "../ui/CodeLabel";
 
 type PageIntroProps = {
   eyebrow: string;
@@ -11,7 +12,7 @@ export function PageIntro({ eyebrow, title, description, aside }: PageIntroProps
   return (
     <header className="page-intro">
       <div>
-        <p className="code-label">{eyebrow}</p>
+        <CodeLabel>{eyebrow}</CodeLabel>
         <h1>{title}<span aria-hidden="true">.</span></h1>
         {description && <p>{description}</p>}
       </div>
