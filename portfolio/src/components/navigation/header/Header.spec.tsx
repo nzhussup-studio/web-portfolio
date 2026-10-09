@@ -20,7 +20,7 @@ describe("Header", () => {
       { route: "/projects" },
     );
 
-    expect(screen.getByRole("link", { name: "Nurzhanat Zhussup home" }).querySelector("img")).toHaveAttribute("src", "/brand/nz-light.svg");
+    expect(screen.getByRole("link", { name: "Nurzhanat Zhussup home" }).querySelectorAll("img")).toHaveLength(2);
     expect(screen.getByRole("link", { name: "Projects" })).toHaveClass("is-active");
     fireEvent.click(screen.getByRole("button", { name: "Enter Nerd Mode" }));
     expect(toggleNerdMode).toHaveBeenCalledOnce();
@@ -41,7 +41,11 @@ describe("Header", () => {
       />,
     );
 
-    expect(screen.getByRole("link", { name: "Nurzhanat Zhussup home" }).querySelector("img")).toHaveAttribute("src", "/brand/nz-dark.svg");
+    const brandImages = screen.getByRole("link", { name: "Nurzhanat Zhussup home" }).querySelectorAll("img");
+    expect([...brandImages].map((image) => image.getAttribute("src"))).toEqual([
+      "/brand/nz-light.svg",
+      "/brand/nz-dark.svg",
+    ]);
     expect(screen.getByRole("link", { name: "Мен туралы" })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Switch to English" }));
     expect(changeLanguage).toHaveBeenCalledWith("en");

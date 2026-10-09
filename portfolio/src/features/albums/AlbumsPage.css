@@ -2,7 +2,7 @@
 .album-preview { min-width: 0; min-height: 0; display: flex; flex-direction: column; text-decoration: none; }
 .album-cover { position: relative; width: 100%; height: 100%; min-height: 13rem; background: color-mix(in srgb, var(--surface) 82%, var(--background)); display: grid; place-items: center; overflow: hidden; border: 1px solid var(--image-line); border-radius: 0; transition: transform .55s cubic-bezier(.16, 1, .3, 1); }
 .album-cover::before { content: ""; position: absolute; z-index: 1; inset: 48% 0 0; background: linear-gradient(180deg, transparent, rgb(5 7 6 / 58%)); pointer-events: none; }
-.album-cover img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transition: transform .45s ease; }
+.album-cover img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: cover; object-position: center; transition: transform .45s ease; }
 .album-preview:hover .album-cover img { transform: scale(1.015); }
 .album-preview:hover .album-cover, .album-preview:focus-visible .album-cover { transform: translateY(-3px); }
 .album-cover > svg { width: 2rem; height: 2rem; color: var(--muted); }

@@ -1,5 +1,53 @@
 @import "tailwindcss";
 
+/*
+ * Animate the palette once at its source. In particular, do not transition
+ * `color` on every descendant: WebKit can start transitions for inherited
+ * colors on different frames, leaving text temporarily the same color as the
+ * new background. Registered colors keep every consumer on one timeline.
+ */
+@property --background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f3eadc;
+}
+
+@property --surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e7dac7;
+}
+
+@property --text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1b1611;
+}
+
+@property --muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #716455;
+}
+
+@property --line {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #d2c0aa;
+}
+
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #216653;
+}
+
+@property --error {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #a94335;
+}
+
 :root {
   --background: #f3eadc;
   --surface: #e7dac7;
@@ -50,12 +98,15 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 #main-content { flex: 1; }
 .nerd-gui.is-hidden { visibility: hidden; }
 
-:root.is-theme-transition,
-:root.is-theme-transition body,
-:root.is-theme-transition body *:not(.nerd-terminal):not(.nerd-terminal *) {
-  transition-property: background-color, color, border-color, box-shadow, fill, stroke;
-  transition-duration: 850ms, 700ms, 700ms, 850ms, 700ms, 700ms;
-  transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+:root.is-theme-transition {
+  transition:
+    --background 700ms cubic-bezier(.22, 1, .36, 1),
+    --surface 700ms cubic-bezier(.22, 1, .36, 1),
+    --text 700ms cubic-bezier(.22, 1, .36, 1),
+    --muted 700ms cubic-bezier(.22, 1, .36, 1),
+    --line 700ms cubic-bezier(.22, 1, .36, 1),
+    --accent 700ms cubic-bezier(.22, 1, .36, 1),
+    --error 700ms cubic-bezier(.22, 1, .36, 1);
 }
 
 .interface-transition { min-height: 100vh; will-change: opacity; }
@@ -68,10 +119,26 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 
 @keyframes editorial-reveal { from { opacity: 0; transform: translateY(1.25rem); } to { opacity: 1; transform: translateY(0); } }
 @supports (animation-timeline: view()) {
-  .profile-index, .story-grid, .beyond-grid, .linear-section, .project-row, .album-preview, .photo-grid button {
+  .summary-output,
+  .profile-index > header,
+  .profile-index-row,
+  .story-grid > header,
+  .story-copy article,
+  .beyond-grid > div:first-child,
+  .beyond-copy,
+  .beyond-photo,
+  .nerd-note,
+  .linear-section > .section-heading,
+  .cv-row,
+  .skill-row,
+  .certificate-row,
+  .project-row,
+  .album-preview,
+  .album-detail > header,
+  .photo-grid button {
     animation: editorial-reveal linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 22%;
+    animation-range: entry 0% cover 18%;
   }
 }
 
@@ -79,10 +146,32 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
   :root { --header-height: auto; --page-gutter: 1rem; }
   body::before { background: radial-gradient(circle at 100% 4%, color-mix(in srgb, var(--accent) 5%, transparent), transparent 16rem); }
   .content-page { padding-top: 2.75rem; padding-bottom: 5rem; }
+
+  @supports (animation-timeline: view()) {
+    .summary-output,
+    .profile-index > header,
+    .profile-index-row,
+    .story-grid > header,
+    .story-copy article,
+    .beyond-grid > div:first-child,
+    .beyond-copy,
+    .beyond-photo,
+    .nerd-note,
+    .linear-section > .section-heading,
+    .cv-row,
+    .skill-row,
+    .certificate-row,
+    .project-row,
+    .album-preview,
+    .album-detail > header,
+    .photo-grid button {
+      animation-range: entry 0% cover 12%;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .profile-index, .story-grid, .beyond-grid, .linear-section, .project-row, .album-preview, .photo-grid button { animation: none !important; }
+  .summary-output, .profile-index > header, .profile-index-row, .story-grid > header, .story-copy article, .beyond-grid > div:first-child, .beyond-copy, .beyond-photo, .nerd-note, .linear-section > .section-heading, .cv-row, .skill-row, .certificate-row, .project-row, .album-preview, .album-detail > header, .photo-grid button { animation: none !important; }
 }

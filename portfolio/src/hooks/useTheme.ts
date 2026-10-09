@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { resolveTheme, type Theme } from "@/app/preferences";
 
 function getInitialTheme(): Theme {
@@ -10,7 +10,9 @@ export function useTheme() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const transitionTimer = useRef<number | undefined>(undefined);
 
-  useEffect(() => {
+  // Keep the document palette in the same commit as the React controls. A
+  // passive effect allows Safari to paint one frame with mismatched colors.
+  useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
 

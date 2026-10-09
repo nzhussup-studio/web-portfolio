@@ -32,7 +32,7 @@ export function Header({
   return (
     <header className="site-header">
       <div className="site-container header-grid">
-        <BrandMark className="wordmark" theme={theme} />
+        <BrandMark className="wordmark" />
 
         <nav className="primary-nav" aria-label="Primary navigation">
           {navigation.map((item) => (
