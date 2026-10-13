@@ -1,6 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, type PropsWithChildren } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { BackgroundDataPreloader } from "./BackgroundDataPreloader";
+
+const DATA_STALE_TIME = 5 * 60 * 1_000;
 
 export function AppProviders({ children }: PropsWithChildren) {
   const [queryClient] = useState(
@@ -9,6 +12,7 @@ export function AppProviders({ children }: PropsWithChildren) {
         defaultOptions: {
           queries: {
             refetchOnWindowFocus: false,
+            staleTime: DATA_STALE_TIME,
           },
         },
       }),
@@ -16,7 +20,10 @@ export function AppProviders({ children }: PropsWithChildren) {
 
   return (
     <BrowserRouter>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <BackgroundDataPreloader />
+        {children}
+      </QueryClientProvider>
     </BrowserRouter>
   );
 }
