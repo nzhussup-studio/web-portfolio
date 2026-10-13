@@ -1163,6 +1163,7 @@ export interface components {
             id?: number;
             name?: string;
             url?: string;
+            readonly description?: string | null;
             techStack?: string;
             /** Format: int32 */
             displayOrder?: number;

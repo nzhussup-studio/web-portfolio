@@ -31,6 +31,7 @@ export function ProjectsPage() {
             <span className="project-index">{formatProjectIndex(index)}</span>
             <div>
               <h2>{project.name}</h2>
+              {project.description && <p>{project.description}</p>}
               {project.techStack && <code>{project.techStack}</code>}
             </div>
             {project.url && (

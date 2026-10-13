@@ -125,11 +125,12 @@ Use only API-delivered fields for dynamic records:
 
 - `name`
 - `url`
+- `description` is optional, read-only, and supplied by the backend from GitHub
 - `techStack`
 - `displayOrder` controls order and is not displayed
 - `id` is an internal key and is not displayed
 
-The backend Project schema does not provide a description, category, year, image, status, star count, live URL, or featured flag. Do not invent or hardcode those values. The current app fetches repository descriptions from GitHub separately; do not make new UI depend on that behavior unless the user explicitly keeps it and the external dependency is documented.
+The backend Project schema does not provide a category, year, image, status, star count, live URL, or featured flag. Do not invent or hardcode those values. Display `description` only when the backend provides it; clients must not fetch it from GitHub or allow it to be edited.
 
 ### Album previews
 
