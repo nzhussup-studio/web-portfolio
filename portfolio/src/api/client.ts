@@ -1,7 +1,7 @@
 import createClient from "openapi-fetch";
 import type { paths } from "./generated/schema";
 
-export const API_ORIGIN = "https://api.nzhussup.dev";
+export const API_ORIGIN =import.meta.env.VITE_API_ORIGIN ?? "http://localhost:8082";
 export const API_BASE_URL = `${API_ORIGIN}/v1`;
 
 export const apiClient = createClient<paths>({ baseUrl: API_ORIGIN });
