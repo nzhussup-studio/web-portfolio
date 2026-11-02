@@ -4,103 +4,183 @@
  */
 
 export interface paths {
-    "/v1/base/work-experience": {
+    "/v1/admin/work-experiences/{id}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["listWorkExperience"];
-        put: operations["updateWorkExperience"];
-        post: operations["createWorkExperience"];
-        delete: operations["deleteWorkExperience"];
+        get?: never;
+        put: operations["updateAdminWorkExperiences"];
+        post?: never;
+        delete: operations["deleteAdminWorkExperiences"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/v1/base/skill": {
+    "/v1/admin/skills/{id}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["listSkill"];
-        put: operations["updateSkill"];
-        post: operations["createSkill"];
-        delete: operations["deleteSkill"];
+        get?: never;
+        put: operations["updateAdminSkills"];
+        post?: never;
+        delete: operations["deleteAdminSkills"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/v1/base/project": {
+    "/v1/admin/projects/{id}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["listProject"];
-        put: operations["updateProject"];
-        post: operations["createProject"];
-        delete: operations["deleteProject"];
+        get?: never;
+        put: operations["updateAdminProjects"];
+        post?: never;
+        delete: operations["deleteAdminProjects"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/v1/base/education": {
+    "/v1/admin/education-records/{id}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["listEducation"];
-        put: operations["updateEducation"];
-        post: operations["createEducation"];
-        delete: operations["deleteEducation"];
+        get?: never;
+        put: operations["updateAdminEducationRecords"];
+        post?: never;
+        delete: operations["deleteAdminEducationRecords"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/v1/base/cv-generator-preference": {
+    "/v1/admin/cv-generator-preferences": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["listCvGeneratorPreference"];
-        put: operations["updateCvGeneratorPreference"];
-        post: operations["createCvGeneratorPreference"];
-        delete: operations["deleteCvGeneratorPreference"];
+        get: operations["listAdminCvGeneratorPreferences"];
+        put: operations["updateAdminCvGeneratorPreferences"];
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/v1/base/certificate": {
+    "/v1/admin/certificates/{id}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["listCertificate"];
-        put: operations["updateCertificate"];
-        post: operations["createCertificate"];
-        delete: operations["deleteCertificate"];
+        get?: never;
+        put: operations["updateAdminCertificates"];
+        post?: never;
+        delete: operations["deleteAdminCertificates"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/v1/base/cache/clearGlobalCache": {
+    "/v1/admin/work-experiences": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listAdminWorkExperiences"];
+        put?: never;
+        post: operations["createAdminWorkExperiences"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/skills": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listAdminSkills"];
+        put?: never;
+        post: operations["createAdminSkills"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/projects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listAdminProjects"];
+        put?: never;
+        post: operations["createAdminProjects"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/education-records": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listAdminEducationRecords"];
+        put?: never;
+        post: operations["createAdminEducationRecords"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/certificates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listAdminCertificates"];
+        put?: never;
+        post: operations["createAdminCertificates"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/cache/invalidate": {
         parameters: {
             query?: never;
             header?: never;
@@ -109,14 +189,94 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        post: operations["createCache"];
+        post: operations["createAdminCache"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/v1/album": {
+    "/v1/work-experiences": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listWorkExperiences"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/skills": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listSkills"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/projects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listProjects"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/education-records": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listEducationRecords"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/certificates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["listCertificates"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/albums": {
         parameters: {
             query?: never;
             header?: never;
@@ -262,7 +422,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v1/album/{id}": {
+    "/v1/admin/albums/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -464,7 +624,94 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v1/album/{id}/{imageID}": {
+    "/v1/admin/albums/{id}/images": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Upload image(s) to an album
+         * @description Upload one or more image files to the specified album
+         */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Album ID */
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "multipart/form-data": {
+                        /** @description Image file(s) to upload */
+                        file: string[];
+                    };
+                };
+            };
+            responses: {
+                /** @description Upload accepted for background processing */
+                202: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["image_service_model.SuccessResponse"] & {
+                            data?: components["schemas"]["image_service_service.UploadJob"];
+                        };
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["image_service_model.ErrorDetails"];
+                    };
+                };
+                /** @description Album Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["image_service_model.ErrorDetails"];
+                    };
+                };
+                /** @description Conflict */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["image_service_model.ErrorDetails"];
+                    };
+                };
+                /** @description Internal Server Error */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["image_service_model.ErrorDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/albums/{id}/images/{imageID}": {
         parameters: {
             query?: never;
             header?: never;
@@ -571,22 +818,6 @@ export interface paths {
         };
         options?: never;
         head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/v1/album/{id}/{imageID}/rename": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
         /**
          * Rename an image in an album
          * @description Renames a specific image in an album to a new valid name (alphanumeric, no path components)
@@ -659,97 +890,62 @@ export interface paths {
         };
         trace?: never;
     };
-    "/v1/album/{id}/upload": {
+    "/v1/admin/albums/{id}/uploads/{jobID}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get?: never;
-        put?: never;
         /**
-         * Upload image(s) to an album
-         * @description Upload one or more image files to the specified album
+         * Get upload job status
+         * @description Returns progress and final result for a background image upload
          */
-        post: {
+        get: {
             parameters: {
                 query?: never;
                 header?: never;
                 path: {
                     /** @description Album ID */
                     id: string;
+                    /** @description Upload job ID */
+                    jobID: string;
                 };
                 cookie?: never;
             };
-            requestBody: {
-                content: {
-                    "multipart/form-data": {
-                        /**
-                         * Format: binary
-                         * @description Image file(s) to upload
-                         */
-                        file: string;
-                    };
-                };
-            };
+            requestBody?: never;
             responses: {
-                /** @description Image uploaded successfully */
-                201: {
+                /** @description OK */
+                200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
                         "application/json": components["schemas"]["image_service_model.SuccessResponse"] & {
-                            data?: components["schemas"]["image_service_model.Image"][];
+                            data?: components["schemas"]["image_service_service.UploadJob"];
                         };
                     };
                 };
-                /** @description Bad Request */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["image_service_model.ErrorDetails"];
-                    };
-                };
-                /** @description Album Not Found */
+                /** @description Upload job not found */
                 404: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["image_service_model.ErrorDetails"];
-                    };
-                };
-                /** @description Conflict */
-                409: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["image_service_model.ErrorDetails"];
-                    };
-                };
-                /** @description Internal Server Error */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["image_service_model.ErrorDetails"];
+                        "application/json": components["schemas"]["image_service_model.ErrorResponse"];
                     };
                 };
             };
         };
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/v1/album/cache": {
+    "/v1/admin/albums/cache": {
         parameters: {
             query?: never;
             header?: never;
@@ -797,17 +993,14 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v1/album/health": {
+    "/v1/albums": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        /**
-         * Health check endpoint
-         * @description Returns 200 OK if the service is up
-         */
+        /** List public albums */
         get: {
             parameters: {
                 query?: never;
@@ -817,13 +1010,15 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Service is healthy */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["image_service_model.SuccessResponse"];
+                        "application/json": components["schemas"]["image_service_model.SuccessResponse"] & {
+                            data?: components["schemas"]["image_service_model.AlbumPreview"][];
+                        };
                     };
                 };
             };
@@ -836,7 +1031,107 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v1/llm/configuration": {
+    "/v1/albums/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a publicly accessible album */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Album ID */
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["image_service_model.SuccessResponse"] & {
+                            data?: components["schemas"]["image_service_model.Album"];
+                        };
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["image_service_model.ErrorResponse"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/albums/{id}/images/{imageID}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Serve an image from a public or semi-public album */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Album ID */
+                    id: string;
+                    /** @description Image ID */
+                    imageID: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/octet-stream": string;
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/octet-stream": components["schemas"]["image_service_model.ErrorResponse"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/llm/configuration": {
         parameters: {
             query?: never;
             header?: never;
@@ -912,66 +1207,20 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v1/llm/health": {
+    "/v1/llm/summaries": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        /**
-         * Health check endpoint
-         * @description Checks the connectivity and health of dependent services, particularly Redis.
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Status OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["llm_service_dto.APIResponse"];
-                    };
-                };
-                /** @description Redis connection failed */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["llm_service_dto.APIResponse"];
-                    };
-                };
-            };
-        };
+        get?: never;
         put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/v1/llm/summarize": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
         /**
          * Generate professional profile summary
          * @description Retrieves structured personal data (e.g., work experience, education), generates a professional summary using a large language model (LLM), and returns it in the requested language.
          */
-        get: {
+        post: {
             parameters: {
                 query?: {
                     lang?: string;
@@ -1011,54 +1260,13 @@ export interface paths {
                 };
             };
         };
-        put?: never;
-        post?: never;
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/health": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Health check endpoint
-         * @description Returns 200 OK if the service is up
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Service is healthy */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["account_service_model.SuccessResponse"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/v1/account": {
+    "/v1/me/account": {
         parameters: {
             query?: never;
             header?: never;
@@ -1163,7 +1371,7 @@ export interface components {
             id?: number;
             name?: string;
             url?: string;
-            readonly description?: string | null;
+            readonly description?: string;
             techStack?: string;
             /** Format: int32 */
             displayOrder?: number;
@@ -1238,6 +1446,15 @@ export interface components {
             message?: string;
             status?: number;
         };
+        "image_service_service.UploadJob": {
+            completed?: number;
+            createdAt?: string;
+            error?: string;
+            id?: string;
+            images?: components["schemas"]["image_service_model.Image"][];
+            status?: string;
+            total?: number;
+        };
         "llm_service_dto.APIResponse": {
             error?: string;
             message?: string;
@@ -1275,31 +1492,13 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
-    listWorkExperience: {
+    updateAdminWorkExperiences: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": Record<string, never>[];
-                };
+            path: {
+                id: number;
             };
-        };
-    };
-    updateWorkExperience: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
             cookie?: never;
         };
         requestBody: {
@@ -1319,42 +1518,16 @@ export interface operations {
             };
         };
     };
-    createWorkExperience: {
+    deleteAdminWorkExperiences: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                id: number;
+            };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_WorkExperience"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": components["schemas"]["base_service_WorkExperience"];
-                };
-            };
-        };
-    };
-    deleteWorkExperience: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_WorkExperience"];
-            };
-        };
+        requestBody?: never;
         responses: {
             /** @description OK */
             200: {
@@ -1365,31 +1538,13 @@ export interface operations {
             };
         };
     };
-    listSkill: {
+    updateAdminSkills: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": Record<string, never>[];
-                };
+            path: {
+                id: number;
             };
-        };
-    };
-    updateSkill: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
             cookie?: never;
         };
         requestBody: {
@@ -1409,42 +1564,16 @@ export interface operations {
             };
         };
     };
-    createSkill: {
+    deleteAdminSkills: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                id: number;
+            };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_Skill"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": components["schemas"]["base_service_Skill"];
-                };
-            };
-        };
-    };
-    deleteSkill: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_Skill"];
-            };
-        };
+        requestBody?: never;
         responses: {
             /** @description OK */
             200: {
@@ -1455,31 +1584,13 @@ export interface operations {
             };
         };
     };
-    listProject: {
+    updateAdminProjects: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": Record<string, never>[];
-                };
+            path: {
+                id: number;
             };
-        };
-    };
-    updateProject: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
             cookie?: never;
         };
         requestBody: {
@@ -1499,42 +1610,16 @@ export interface operations {
             };
         };
     };
-    createProject: {
+    deleteAdminProjects: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                id: number;
+            };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_Project"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": components["schemas"]["base_service_Project"];
-                };
-            };
-        };
-    };
-    deleteProject: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_Project"];
-            };
-        };
+        requestBody?: never;
         responses: {
             /** @description OK */
             200: {
@@ -1545,31 +1630,13 @@ export interface operations {
             };
         };
     };
-    listEducation: {
+    updateAdminEducationRecords: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": Record<string, never>[];
-                };
+            path: {
+                id: number;
             };
-        };
-    };
-    updateEducation: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
             cookie?: never;
         };
         requestBody: {
@@ -1589,42 +1656,16 @@ export interface operations {
             };
         };
     };
-    createEducation: {
+    deleteAdminEducationRecords: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                id: number;
+            };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_Education"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": components["schemas"]["base_service_Education"];
-                };
-            };
-        };
-    };
-    deleteEducation: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_Education"];
-            };
-        };
+        requestBody?: never;
         responses: {
             /** @description OK */
             200: {
@@ -1635,7 +1676,7 @@ export interface operations {
             };
         };
     };
-    listCvGeneratorPreference: {
+    listAdminCvGeneratorPreferences: {
         parameters: {
             query?: never;
             header?: never;
@@ -1650,12 +1691,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "*/*": Record<string, never>[];
+                    "*/*": components["schemas"]["base_service_CvGeneratorPreference"];
                 };
             };
         };
     };
-    updateCvGeneratorPreference: {
+    updateAdminCvGeneratorPreferences: {
         parameters: {
             query?: never;
             header?: never;
@@ -1679,16 +1720,18 @@ export interface operations {
             };
         };
     };
-    createCvGeneratorPreference: {
+    updateAdminCertificates: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                id: number;
+            };
             cookie?: never;
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["base_service_CvGeneratorPreference"];
+                "application/json": components["schemas"]["base_service_Certificate"];
             };
         };
         responses: {
@@ -1698,23 +1741,21 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "*/*": components["schemas"]["base_service_CvGeneratorPreference"];
+                    "*/*": components["schemas"]["base_service_Certificate"];
                 };
             };
         };
     };
-    deleteCvGeneratorPreference: {
+    deleteAdminCertificates: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                id: number;
+            };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_CvGeneratorPreference"];
-            };
-        };
+        requestBody?: never;
         responses: {
             /** @description OK */
             200: {
@@ -1725,7 +1766,7 @@ export interface operations {
             };
         };
     };
-    listCertificate: {
+    listAdminWorkExperiences: {
         parameters: {
             query?: never;
             header?: never;
@@ -1745,7 +1786,183 @@ export interface operations {
             };
         };
     };
-    updateCertificate: {
+    createAdminWorkExperiences: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["base_service_WorkExperience"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_WorkExperience"];
+                };
+            };
+        };
+    };
+    listAdminSkills: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": Record<string, never>[];
+                };
+            };
+        };
+    };
+    createAdminSkills: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["base_service_Skill"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_Skill"];
+                };
+            };
+        };
+    };
+    listAdminProjects: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": Record<string, never>[];
+                };
+            };
+        };
+    };
+    createAdminProjects: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["base_service_Project"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_Project"];
+                };
+            };
+        };
+    };
+    listAdminEducationRecords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": Record<string, never>[];
+                };
+            };
+        };
+    };
+    createAdminEducationRecords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["base_service_Education"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_Education"];
+                };
+            };
+        };
+    };
+    listAdminCertificates: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": Record<string, never>[];
+                };
+            };
+        };
+    };
+    createAdminCertificates: {
         parameters: {
             query?: never;
             header?: never;
@@ -1769,53 +1986,7 @@ export interface operations {
             };
         };
     };
-    createCertificate: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_Certificate"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "*/*": components["schemas"]["base_service_Certificate"];
-                };
-            };
-        };
-    };
-    deleteCertificate: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["base_service_Certificate"];
-            };
-        };
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
-    createCache: {
+    createAdminCache: {
         parameters: {
             query?: never;
             header?: never;
@@ -1831,6 +2002,106 @@ export interface operations {
                 };
                 content: {
                     "*/*": string;
+                };
+            };
+        };
+    };
+    listWorkExperiences: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_WorkExperience"][];
+                };
+            };
+        };
+    };
+    listSkills: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_Skill"][];
+                };
+            };
+        };
+    };
+    listProjects: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_Project"][];
+                };
+            };
+        };
+    };
+    listEducationRecords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_Education"][];
+                };
+            };
+        };
+    };
+    listCertificates: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "*/*": components["schemas"]["base_service_Certificate"][];
                 };
             };
         };

@@ -21,9 +21,9 @@ describe("getOrderedList", () => {
     );
     vi.stubGlobal("fetch", fetchMock);
 
-    const result = await getOrderedList<(typeof records)[number]>("base/project");
+    const result = await getOrderedList<(typeof records)[number]>("projects");
 
-    expect(fetchMock).toHaveBeenCalledWith(`${API_BASE_URL}/base/project`);
+    expect(fetchMock).toHaveBeenCalledWith(`${API_BASE_URL}/projects`);
     expect(result.map((record) => record.name)).toEqual(["First", "Second", "Unordered"]);
     expect(records.map((record) => record.name)).toEqual(["Second", "First", "Unordered"]);
   });
@@ -31,7 +31,7 @@ describe("getOrderedList", () => {
   it("throws an ApiError containing the response status", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(null, { status: 503 })));
 
-    await expect(getOrderedList("base/project")).rejects.toMatchObject({
+    await expect(getOrderedList("projects")).rejects.toMatchObject({
       name: "ApiError",
       status: 503,
       message: "Request failed",

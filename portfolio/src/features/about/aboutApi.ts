@@ -1,7 +1,7 @@
 import { apiClient } from "@/api";
 
 export async function fetchSummary(language: "en" | "kk", signal?: AbortSignal) {
-  const { data, error } = await apiClient.GET("/v1/llm/summarize", {
+  const { data, error } = await apiClient.POST("/v1/llm/summaries", {
     params: { query: { lang: language } },
     signal,
   });

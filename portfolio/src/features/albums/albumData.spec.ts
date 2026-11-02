@@ -13,7 +13,7 @@ describe("album data", () => {
 
   it("builds the documented image endpoint when no URL is provided", () => {
     expect(albumImageSource("winter trip", { id: "cover.jpg" })).toContain(
-      "/album/winter%20trip/cover.jpg",
+      "/albums/winter%20trip/images/cover.jpg",
     );
   });
 

@@ -10,9 +10,7 @@ describe("album queries", () => {
     vi.mocked(apiClient.GET).mockResolvedValue({ data: { data: albums } } as never);
 
     await expect(getAlbumPreviews()).resolves.toEqual(albums);
-    expect(apiClient.GET).toHaveBeenCalledWith("/v1/album", {
-      params: { query: { type: "public" } },
-    });
+    expect(apiClient.GET).toHaveBeenCalledWith("/v1/albums");
   });
 
   it("requests an album by ID", async () => {
@@ -20,7 +18,7 @@ describe("album queries", () => {
     vi.mocked(apiClient.GET).mockResolvedValue({ data: { data: album } } as never);
 
     await expect(getAlbum("alps")).resolves.toEqual(album);
-    expect(apiClient.GET).toHaveBeenCalledWith("/v1/album/{id}", {
+    expect(apiClient.GET).toHaveBeenCalledWith("/v1/albums/{id}", {
       params: { path: { id: "alps" } },
     });
   });

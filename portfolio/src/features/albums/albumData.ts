@@ -11,7 +11,7 @@ export function sortAlbums(albums: AlbumPreview[]): AlbumPreview[] {
 
 export function albumImageSource(albumId: string, image: AlbumImage): string | undefined {
   if (image.url) return resolveApiAsset(image.url);
-  if (image.id) return `${API_BASE_URL}/album/${encodeURIComponent(albumId)}/${encodeURIComponent(image.id)}`;
+  if (image.id) return `${API_BASE_URL}/albums/${encodeURIComponent(albumId)}/images/${encodeURIComponent(image.id)}`;
   return undefined;
 }
 
