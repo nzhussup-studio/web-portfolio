@@ -3,9 +3,12 @@ import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { renderWithApp } from "@/test/render";
 import { AboutPage } from "./AboutPage";
-import { fetchSummary } from "./aboutApi";
+import { fetchSummary, SummaryWaitTimeoutError } from "./aboutApi";
 
-vi.mock("./aboutApi", () => ({ fetchSummary: vi.fn() }));
+vi.mock("./aboutApi", async (importOriginal) => ({
+  ...await importOriginal<typeof import("./aboutApi")>(),
+  fetchSummary: vi.fn(),
+}));
 
 describe("AboutPage", () => {
   it("renders the introduction and requests the selected-language summary", async () => {
@@ -63,5 +66,15 @@ describe("AboutPage", () => {
     await waitFor(() => expect(aborted).toBe(true));
     expect(screen.getByRole("button", { name: "portfolio.about.generate" })).toBeEnabled();
     expect(screen.queryByText("ai.summary / live")).not.toBeInTheDocument();
+  });
+
+  it("shows a distinct message when frontend polling times out", async () => {
+    vi.mocked(fetchSummary).mockRejectedValue(new SummaryWaitTimeoutError());
+    renderWithApp(<AboutPage language="en" />);
+
+    fireEvent.click(screen.getByRole("button", { name: "portfolio.about.generate" }));
+
+    expect(await screen.findByText("portfolio.about.timeout")).toBeInTheDocument();
+    expect(screen.queryByText("portfolio.about.error")).not.toBeInTheDocument();
   });
 });

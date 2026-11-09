@@ -78,6 +78,7 @@
       "ready": "Ready when you are.",
       "loading": "Generating a summary from my experience…",
       "error": "The AI summary is unavailable right now. Please try again later.",
+      "timeout": "This is taking a little longer than usual. Please try again in a moment.",
       "factsLabel": "A few facts about Nurzhanat",
       "factsTitle": "At a glance",
       "facts": {

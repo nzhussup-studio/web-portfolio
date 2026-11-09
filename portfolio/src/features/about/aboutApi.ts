@@ -2,6 +2,13 @@ import { apiClient } from "@/api";
 
 const MAX_FRONTEND_WAIT_MS = 20_000;
 
+export class SummaryWaitTimeoutError extends Error {
+	constructor() {
+		super("Summary generation is taking longer than expected");
+		this.name = "SummaryWaitTimeoutError";
+	}
+}
+
 export async function fetchSummary(language: "en" | "kk", signal?: AbortSignal) {
 	const response = await apiClient.POST("/v1/llm/summaries/generations", {
 		body: { language },
@@ -23,7 +30,7 @@ export async function fetchSummary(language: "en" | "kk", signal?: AbortSignal) 
 	}
 
 	if (state?.status === "generating") {
-		throw new Error("Summary generation is taking longer than expected. Please retry.");
+		throw new SummaryWaitTimeoutError();
 	}
 	if (state?.status !== "completed" || !state.summary) {
 		throw new Error("Summary generation did not complete");

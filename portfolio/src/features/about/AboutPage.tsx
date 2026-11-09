@@ -11,7 +11,7 @@ import { Spinner } from "@/components/ui/spinner";
 import profilePhoto from "./assets/nurik.jpeg";
 import mountainsPhoto from "./assets/mountains.jpeg";
 import forestPhoto from "./assets/forest.jpeg";
-import { fetchSummary } from "./aboutApi";
+import { fetchSummary, SummaryWaitTimeoutError } from "./aboutApi";
 import "./AboutPage.css";
 
 type AboutPageProps = {
@@ -37,7 +37,7 @@ export function AboutPage({ language }: AboutPageProps) {
     queryFn: ({ signal }) => fetchSummary(language, signal),
     enabled: requested,
     staleTime: 5 * 60 * 1000,
-    retry: 1,
+    retry: false,
   });
 
   useEffect(() => {
@@ -118,7 +118,13 @@ export function AboutPage({ language }: AboutPageProps) {
         <section className="summary-output" aria-live="polite" aria-busy={summary.isFetching}>
           <CodeLabel tone="accent">ai.summary / live</CodeLabel>
           {summary.isPending && <p>{t("portfolio.about.loading")}</p>}
-          {summary.isError && <p className="error-text">{t("portfolio.about.error")}</p>}
+          {summary.isError && (
+            <p className="error-text">
+              {t(summary.error instanceof SummaryWaitTimeoutError
+                ? "portfolio.about.timeout"
+                : "portfolio.about.error")}
+            </p>
+          )}
           {summary.data && <p>{summary.data.slice(0, visibleCharacters)}</p>}
         </section>
       )}
