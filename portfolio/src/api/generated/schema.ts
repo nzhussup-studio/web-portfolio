@@ -1140,7 +1140,7 @@ export interface paths {
         };
         /**
          * Get current LLM configuration
-         * @description Returns active runtime LLM settings such as model, prompts, and parallel generation flag.
+         * @description Returns the active model and language prompts.
          */
         get: {
             parameters: {
@@ -1164,7 +1164,7 @@ export interface paths {
         };
         /**
          * Update LLM configuration
-         * @description Updates runtime LLM settings such as model, prompts, and parallel generation flag.
+         * @description Updates the active model and language prompts.
          */
         put: {
             parameters: {
@@ -1207,7 +1207,91 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v1/llm/summaries": {
+    "/v1/llm/summaries/{language}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get summary or generation status */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Language */
+                    language: "en" | "kk" | "de";
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Generated summary */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["llm_service_dto.SummaryResponse"];
+                    };
+                };
+                /** @description Generation in progress */
+                202: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["llm_service_dto.SummaryResponse"];
+                    };
+                };
+                /** @description Invalid language */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["llm_service_dto.APIResponse"];
+                    };
+                };
+                /** @description No summary or active generation */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["llm_service_dto.SummaryResponse"];
+                    };
+                };
+                /** @description Internal server error */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["llm_service_dto.APIResponse"];
+                    };
+                };
+                /** @description Generation failed */
+                503: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["llm_service_dto.SummaryResponse"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/llm/summaries/generations": {
         parameters: {
             query?: never;
             header?: never;
@@ -1217,30 +1301,42 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Generate professional profile summary
-         * @description Retrieves structured personal data (e.g., work experience, education), generates a professional summary using a large language model (LLM), and returns it in the requested language.
+         * Start or join summary generation
+         * @description Returns a current cached summary or starts missing and stale language summaries in parallel.
          */
         post: {
             parameters: {
-                query?: {
-                    lang?: string;
-                };
+                query?: never;
                 header?: never;
                 path?: never;
                 cookie?: never;
             };
-            requestBody?: never;
+            /** @description Requested language */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["llm_service_dto.GenerationRequest"];
+                };
+            };
             responses: {
-                /** @description Generated professional summary */
+                /** @description Current summary */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["llm_service_dto.APIResponse"];
+                        "application/json": components["schemas"]["llm_service_dto.SummaryResponse"];
                     };
                 };
-                /** @description Invalid query parameters */
+                /** @description Generation in progress */
+                202: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["llm_service_dto.SummaryResponse"];
+                    };
+                };
+                /** @description Invalid request */
                 400: {
                     headers: {
                         [name: string]: unknown;
@@ -1249,7 +1345,7 @@ export interface paths {
                         "application/json": components["schemas"]["llm_service_dto.APIResponse"];
                     };
                 };
-                /** @description Internal server error with error details */
+                /** @description Internal server error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -1461,19 +1557,30 @@ export interface components {
             status?: number;
         };
         "llm_service_dto.ConfigurationRequest": {
-            enable_parallel_generation?: boolean;
             model?: string;
             system_prompt_de?: string;
             system_prompt_en?: string;
             system_prompt_kk?: string;
         };
         "llm_service_dto.ConfigurationResponse": {
-            enable_parallel_generation?: boolean;
             model?: string;
             status?: number;
             system_prompt_de?: string;
             system_prompt_en?: string;
             system_prompt_kk?: string;
+        };
+        "llm_service_dto.GenerationRequest": {
+            /** @example en */
+            language: string;
+        };
+        "llm_service_dto.SummaryResponse": {
+            /** @example en */
+            language?: string;
+            /** @example 1500 */
+            poll_after_ms?: number;
+            /** @example generating */
+            status?: string;
+            summary?: string;
         };
         "account_service_model.ErrorResponse": {
             /** @example Unauthorized */
