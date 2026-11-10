@@ -133,7 +133,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
   .skill-row,
   .certificate-row,
   .project-row,
-  .album-preview,
+  /* Album previews stay fully opaque near the footer. Uncomment to restore their scroll-reveal animation. */
+  /* .album-preview, */
   .album-detail > header,
   .photo-grid button {
     animation: editorial-reveal linear both;
@@ -162,7 +163,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
     .skill-row,
     .certificate-row,
     .project-row,
-    .album-preview,
+    /* Keep disabled while album previews are excluded from the scroll-reveal selector above. */
+    /* .album-preview, */
     .album-detail > header,
     .photo-grid button {
       animation-range: entry 0% cover 12%;
