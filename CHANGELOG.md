@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/nzhussup/personal-website/compare/v3.2.0...v3.3.0) (2026-11-10)
+
+
+### Features
+
+* add description option in projects ([0d3d085](https://github.com/nzhussup/personal-website/commit/0d3d08521a8326ed6f7c497bd2d072d9adbcf66a))
+* enable markdown rendering in cv ([db8420a](https://github.com/nzhussup/personal-website/commit/db8420a164f6d6952d720dcaa2579ffab82cdc6a))
+* follow-up improve theme toggle animation ([bdd20a5](https://github.com/nzhussup/personal-website/commit/bdd20a5042d5ae353a595d8976f7a3bfc7af557f))
+* improve theme toggle animation ([bd54ac0](https://github.com/nzhussup/personal-website/commit/bd54ac0ba7bddf4844a520d92169748a885ca349))
+* introduce data preloader ([63aac24](https://github.com/nzhussup/personal-website/commit/63aac2455479f3626023515ced156d38bca838ef))
+
+
+### Bug Fixes
+
+* cap llm queries at lower timeout ([a7091ed](https://github.com/nzhussup/personal-website/commit/a7091edaef2b75ac1cf57a74657b1107cb448996))
+* change fallback base URL ([3a06315](https://github.com/nzhussup/personal-website/commit/3a0631508b170a055a5f2ac43c9929c21b92bf3a))
+* disable llm query retries and add localization for timeout error ([8f9e3fd](https://github.com/nzhussup/personal-website/commit/8f9e3fdb7a5bea9fb138f5829bc84bfa28f1f7af))
+* footer alignment ([be4447a](https://github.com/nzhussup/personal-website/commit/be4447a57d3c0943b9559053448693bbe9d1da46))
+* generate summary button states ([d73cf16](https://github.com/nzhussup/personal-website/commit/d73cf16f488501a221bdb89df0d70bd2175bc5a9))
+* put base url into the .env file ([5afa05f](https://github.com/nzhussup/personal-website/commit/5afa05fa2c3d31947e46b594f8e5ad58e5898594))
+* remove fade from album page ([9ccd3e2](https://github.com/nzhussup/personal-website/commit/9ccd3e283cba1f2d68c4c64a08ffa20c8138ca41))
+* replace KZ lang code to KK ([6f1e61b](https://github.com/nzhussup/personal-website/commit/6f1e61b762490fb48249e324843fc917681c767d))
+* safari compatability issues ([853abfa](https://github.com/nzhussup/personal-website/commit/853abfa3984c5262fc69573fcb072a3af2dd9527))
+
 ## [3.2.0](https://github.com/nzhussup/personal-website/compare/v3.1.0...v3.2.0) (2026-10-07)
 
 
